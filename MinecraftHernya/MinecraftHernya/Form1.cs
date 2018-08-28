@@ -47,9 +47,9 @@ namespace MinecraftHernya
             double x, y, z;
             try
             {
-                x = Int32.Parse(owX.Text);
-                y = Int32.Parse(owY.Text);
-                z = Int32.Parse(owX.Text);
+                x = Int32.Parse(hellX.Text);
+                y = Int32.Parse(hellY.Text);
+                z = Int32.Parse(hellX.Text);
             }
 
             catch (FormatException ex)
