@@ -49,14 +49,14 @@
             // 
             // owY
             // 
-            this.owY.Location = new System.Drawing.Point(171, 122);
+            this.owY.Location = new System.Drawing.Point(171, 119);
             this.owY.Name = "owY";
             this.owY.Size = new System.Drawing.Size(100, 20);
             this.owY.TabIndex = 1;
             // 
             // owZ
             // 
-            this.owZ.Location = new System.Drawing.Point(294, 122);
+            this.owZ.Location = new System.Drawing.Point(294, 119);
             this.owZ.Name = "owZ";
             this.owZ.Size = new System.Drawing.Size(100, 20);
             this.owZ.TabIndex = 2;
