@@ -21,5 +21,10 @@ namespace WindowsFormsApplication1
         {
             label1.Text = "Hello, world";
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Goodbye, World!");
+        }
     }
 }
