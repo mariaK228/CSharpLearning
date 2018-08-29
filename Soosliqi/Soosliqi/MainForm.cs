@@ -92,6 +92,7 @@ namespace Soosliqi
             else // Player catches suslik
             {
                 score++;
+                nowScore.Text = score.ToString();
                 timerInterval -= decrement;
                 if (timerInterval < minInterval)
                     timerInterval = minInterval;
