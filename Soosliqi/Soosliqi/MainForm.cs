@@ -10,10 +10,12 @@ using System.Windows.Forms;
 
 namespace Soosliqi
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         PictureBox[] holes = new PictureBox[16];
-        public Form1()
+        Random rnd = new Random();
+
+        public MainForm()
         {
             InitializeComponent();
 
@@ -35,22 +37,21 @@ namespace Soosliqi
             holes[15] = pictureBox16;
             
         }
-        Random rnd = new Random();
+
         private void startGame_Click(object sender, EventArgs e)
         {
             int count = 0;
             timer1.Interval = 30000;
             timer1.Enabled = true;
             timer2.Interval = 3000;
-            while (timer1.Enabled == true )
+
+            while (timer1.Enabled == true)
             {
                 PictureBox pict = holes[rnd.Next(0, holes.Length)];
                 pict.Image = System.Drawing.Image.FromFile("C:/Users/Мария/Desktop/Pawya_holesusl.png");
                 timer2.Enabled = true;
                 timer2.Start();
-
-                
             }
-            }
+        }
     }
 }
