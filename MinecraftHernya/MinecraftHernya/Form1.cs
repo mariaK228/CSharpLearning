@@ -33,11 +33,30 @@ namespace MinecraftHernya
                 MessageBox.Show(ex.Message);
                 return;
             }
+            double mult;
+            try
+            {
+                mult = Convert.ToDouble(multiply.Text);
+            }
 
-            double mult = Convert.ToDouble(multiply.Text);
-            double hX = x / mult;
-            double hY = y / mult;
-            double hZ = z / mult;
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            double hX, hY, hZ;
+            if (mult != 0)
+            {
+                hX = x / mult;
+                hY = y / mult;
+                hZ = z / mult;
+            }
+            else 
+            {
+                MessageBox.Show("Деление на 0");
+                return;
+            }
 
             hellX.Text = hX.ToString();
             hellY.Text = hY.ToString();
@@ -60,7 +79,17 @@ namespace MinecraftHernya
                 return;
             }
 
-            double mult = Convert.ToDouble(multiply.Text);
+            double mult;
+            try
+            {
+                mult = Convert.ToDouble(multiply.Text);
+            }
+
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             double oX = x * mult;
             double oY = y * mult;
             double oZ = z * mult;
