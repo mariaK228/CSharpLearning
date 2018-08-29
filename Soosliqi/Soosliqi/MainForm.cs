@@ -147,7 +147,6 @@ namespace Soosliqi
                     MessageBox.Show("Вы побили свой рекорд!");
                     scoreLabel.Text = maxscore.ToString();
                 }
-                MessageBox.Show("You lose!");
             }
         }
 
