@@ -13,8 +13,17 @@ namespace Soosliqi
 {
     public partial class MainForm : Form
     {
+        // Array of pictureBoxes representing clickable holes
         PictureBox[] holes = new PictureBox[16];
+
+        // Instance of Randomizer
         Random rnd = new Random();
+
+        // Image of soosliq looking out of the hole
+        private Image soosliqImage = Resources.soosel;
+        
+        // Empty image of a hole
+        private Image noraImage = Resources.nora_soosliqa;
 
         public MainForm()
         {
@@ -39,20 +48,32 @@ namespace Soosliqi
             
         }
 
+        private int GetHoleIndex(PictureBox picBox)
+        {
+            for (int i = 0; i < holes.Length; i++)
+            {
+                if (holes[i] == picBox)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+        
+
         private void startGame_Click(object sender, EventArgs e)
         {
-            int count = 0;
-            timer1.Interval = 30000;
-            timer1.Enabled = true;
-            timer2.Interval = 3000;
-
-            while (timer1.Enabled == true)
-            {
-                PictureBox pict = holes[rnd.Next(0, holes.Length)];
-                pict.Image = Resources.soosel; // Reading image from resources
-                timer2.Enabled = true;
-                timer2.Start();
-            }
+            
         }
+
+        // Catches click event
+        private void ImageClick(object sender, EventArgs e)
+        {
+            int index = GetHoleIndex((PictureBox) sender);
+
+            MessageBox.Show("Index: " + index);
+        }
+
     }
 }
