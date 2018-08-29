@@ -114,14 +114,15 @@ namespace Soosliqi
 
             do
             {
-                activeHoleNew = rnd.Next(0, holes.Length - 1); // TODO Check
-
-                holes[soosliqCurrentHole].Image = noraImage;
-                holes[activeHoleNew].Image = soosliqImage;
- 
+                activeHoleNew = rnd.Next(0, holes.Length - 1); // TODO Check          
             }
             while (activeHoleNew == soosliqCurrentHole);
+
+            holes[soosliqCurrentHole].Image = noraImage;
+            holes[activeHoleNew].Image = soosliqImage;
+ 
             soosliqCurrentHole = activeHoleNew;
+
             
         }
 
