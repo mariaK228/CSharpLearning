@@ -13,6 +13,9 @@ namespace Soosliqi
 {
     public partial class MainForm : Form
     {
+        private const int minInterval = 1000;
+        private const int decrement = 100;
+
         // Array of pictureBoxes representing clickable holes
         PictureBox[] holes = new PictureBox[16];
 
@@ -24,6 +27,10 @@ namespace Soosliqi
         
         // Empty image of a hole
         private Image noraImage = Resources.nora_soosliqa;
+
+        private int soosliqCurrentHole = 0;
+
+        private int timerInterval = 3000;
 
         public MainForm()
         {
@@ -64,7 +71,10 @@ namespace Soosliqi
 
         private void startGame_Click(object sender, EventArgs e)
         {
-            
+            MainTimer.Interval = timerInterval;
+            MainTimer.Start();
+
+            ChooseActiveHole();
         }
 
         // Catches click event
@@ -72,7 +82,55 @@ namespace Soosliqi
         {
             int index = GetHoleIndex((PictureBox) sender);
 
-            MessageBox.Show("Index: " + index);
+            if (index != soosliqCurrentHole) // Player misses suslik
+            {
+                RequestGameOver(false);
+            }
+            else // Player catches suslik
+            {
+                timerInterval -= decrement;
+                if (timerInterval < minInterval)
+                    timerInterval = minInterval;
+
+                ChooseActiveHole();
+                MainTimer.Stop();
+                MainTimer.Interval = timerInterval;
+                MainTimer.Start();
+            }
+        }
+
+        private void TimerElapsed(object sender, EventArgs e)
+        {
+            RequestGameOver(false);
+        }
+
+        private void ChooseActiveHole()
+        {
+            int activeHoleNew = rnd.Next(0, holes.Length - 1); // TODO Check
+
+            holes[soosliqCurrentHole].Image = noraImage;
+            holes[activeHoleNew].Image = soosliqImage;
+
+            soosliqCurrentHole = activeHoleNew;
+        }
+
+        /// <summary>
+        /// Is called upon end of a game
+        /// </summary>
+        /// <param name="condition">True - player wins, false - player loses</param>
+        private void RequestGameOver(bool condition)
+        {
+            MainTimer.Stop();
+            holes[soosliqCurrentHole].Image = noraImage;
+
+            if (condition == true)
+            {
+                MessageBox.Show("You win!");
+            }
+            else
+            {
+                MessageBox.Show("You lose!");
+            }
         }
 
     }

@@ -31,8 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.startGame = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.MainTimer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
@@ -69,13 +68,17 @@
             // 
             // startGame
             // 
-            this.startGame.Location = new System.Drawing.Point(57, 416);
+            this.startGame.Location = new System.Drawing.Point(57, 514);
             this.startGame.Name = "startGame";
             this.startGame.Size = new System.Drawing.Size(414, 38);
             this.startGame.TabIndex = 16;
             this.startGame.Text = "Играть";
             this.startGame.UseVisualStyleBackColor = true;
             this.startGame.Click += new System.EventHandler(this.startGame_Click);
+            // 
+            // MainTimer
+            // 
+            this.MainTimer.Tick += new System.EventHandler(this.TimerElapsed);
             // 
             // pictureBox16
             // 
@@ -300,8 +303,7 @@
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.Button startGame;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer MainTimer;
     }
 }
 
