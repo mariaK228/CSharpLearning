@@ -115,7 +115,7 @@ namespace Soosliqi
 
             do
             {
-                activeHoleNew = rnd.Next(0, holes.Length - 1); // TODO Check          
+                activeHoleNew = rnd.Next(0, holes.Length); // TODO Check          
             }
             while (activeHoleNew == soosliqCurrentHole);
 
