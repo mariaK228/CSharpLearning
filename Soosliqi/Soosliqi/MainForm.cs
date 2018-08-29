@@ -15,7 +15,7 @@ namespace Soosliqi
     {
         private const int minInterval = 1000;
         private const int decrement = 100;
-        int maxscore;
+        int maxscore = 0;
         int score;
         // Array of pictureBoxes representing clickable holes
         PictureBox[] holes = new PictureBox[16];
@@ -69,7 +69,6 @@ namespace Soosliqi
             return -1;
         }
         
-
         private void startGame_Click(object sender, EventArgs e)
         {
             score = 0;
@@ -87,12 +86,7 @@ namespace Soosliqi
 
             if (index != soosliqCurrentHole) // Player misses suslik
             {
-                if (score > maxscore)
-                {
-                    maxscore = score;
-                    MessageBox.Show("Вы побили свой рекорд!");
-                    scoreLabel.Text = maxscore.ToString();
-                }
+                
                 RequestGameOver(false);
             }
             else // Player catches suslik
@@ -116,12 +110,19 @@ namespace Soosliqi
 
         private void ChooseActiveHole()
         {
-            int activeHoleNew = rnd.Next(0, holes.Length - 1); // TODO Check
+            int activeHoleNew;
 
-            holes[soosliqCurrentHole].Image = noraImage;
-            holes[activeHoleNew].Image = soosliqImage;
+            do
+            {
+                activeHoleNew = rnd.Next(0, holes.Length - 1); // TODO Check
 
+                holes[soosliqCurrentHole].Image = noraImage;
+                holes[activeHoleNew].Image = soosliqImage;
+ 
+            }
+            while (activeHoleNew == soosliqCurrentHole);
             soosliqCurrentHole = activeHoleNew;
+            
         }
 
         /// <summary>
@@ -139,6 +140,12 @@ namespace Soosliqi
             }
             else
             {
+                if (score > maxscore)
+                {
+                    maxscore = score;
+                    MessageBox.Show("Вы побили свой рекорд!");
+                    scoreLabel.Text = maxscore.ToString();
+                }
                 MessageBox.Show("You lose!");
             }
         }
