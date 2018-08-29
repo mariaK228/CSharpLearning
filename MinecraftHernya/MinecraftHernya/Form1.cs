@@ -17,6 +17,7 @@ namespace MinecraftHernya
             InitializeComponent();
         }
 
+       
         private void button1_Click(object sender, EventArgs e)
         {
             double x, y, z;
@@ -33,9 +34,10 @@ namespace MinecraftHernya
                 return;
             }
 
-            double hX = x / 7;
-            double hY = y / 7;
-            double hZ = z / 7;
+            double mult = Convert.ToDouble(multiply.Text);
+            double hX = x / mult;
+            double hY = y / mult;
+            double hZ = z / mult;
 
             hellX.Text = hX.ToString();
             hellY.Text = hY.ToString();
@@ -49,7 +51,7 @@ namespace MinecraftHernya
             {
                 x = Convert.ToDouble(hellX.Text);
                 y = Convert.ToDouble(hellY.Text);
-                z = Convert.ToDouble(hellX.Text);
+                z = Convert.ToDouble(hellZ.Text);
             }
 
             catch (FormatException ex)
@@ -58,9 +60,10 @@ namespace MinecraftHernya
                 return;
             }
 
-            double oX = x * 7;
-            double oY = y * 7;
-            double oZ = z * 7;
+            double mult = Convert.ToDouble(multiply.Text);
+            double oX = x * mult;
+            double oY = y * mult;
+            double oZ = z * mult;
 
             owX.Text = oX.ToString();
             owY.Text = oY.ToString();
