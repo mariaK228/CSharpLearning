@@ -63,6 +63,16 @@ namespace Soosliqi.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nora_soosliqa {
+            get {
+                object obj = ResourceManager.GetObject("nora_soosliqa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap soosel {
             get {
                 object obj = ResourceManager.GetObject("soosel", resourceCulture);

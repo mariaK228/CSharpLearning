@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Soosliqi.Properties;
 
 namespace Soosliqi
 {
@@ -48,7 +49,7 @@ namespace Soosliqi
             while (timer1.Enabled == true)
             {
                 PictureBox pict = holes[rnd.Next(0, holes.Length)];
-                pict.Image = System.Drawing.Image.FromFile("C:/Users/Мария/Desktop/Pawya_holesusl.png");
+                pict.Image = Resources.soosel; // Reading image from resources
                 timer2.Enabled = true;
                 timer2.Start();
             }
