@@ -17,6 +17,8 @@ namespace Soosliqi
         private const int decrement = 100;
         int maxscore = 0;
         int score;
+        int timeLeft;
+
         // Array of pictureBoxes representing clickable holes
         PictureBox[] holes = new PictureBox[16];
 
@@ -73,7 +75,9 @@ namespace Soosliqi
         {
             score = 0;
             MainTimer.Interval = timerInterval;
+            timeLeft = timerInterval;
             MainTimer.Start();
+            
 
             ChooseActiveHole();
         }
@@ -101,6 +105,9 @@ namespace Soosliqi
                 MainTimer.Stop();
                 MainTimer.Interval = timerInterval;
                 MainTimer.Start();
+                timerToLoss.Stop();
+                timeLeft = timerInterval;
+                timerToLoss.Start();
             }
         }
 
@@ -134,8 +141,7 @@ namespace Soosliqi
         private void RequestGameOver(bool condition)
         {
             MainTimer.Stop();
-            holes[soosliqCurrentHole].Image = noraImage;
-
+            holes[soosliqCurrentHole].Image = noraImage; 
             if (condition == true)
             {
                 MessageBox.Show("You win!");
@@ -145,10 +151,26 @@ namespace Soosliqi
                 if (score > maxscore)
                 {
                     maxscore = score;
-                    MessageBox.Show("Вы побили свой рекорд!");
+                    MessageBox.Show("Новый рекорд!");
                     scoreLabel.Text = maxscore.ToString();
                 }
+                
+                else
+                {
+                    MessageBox.Show("Время вышло");
+                }
             }
+        }
+        // 
+        private void timerToLoss_Tick(object sender, EventArgs e)
+        {
+            if (MainTimer.Enabled == true)
+            {
+                showtimeToLoss.Text = ((double)timeLeft / 1000).ToString();
+                timeLeft -= timerToLoss.Interval;
+            }
+            else
+                showtimeToLoss.Text = "";
         }
 
     }
