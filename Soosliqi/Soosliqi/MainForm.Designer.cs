@@ -335,7 +335,6 @@
             // 
             // timerToLoss
             // 
-            this.timerToLoss.Enabled = true;
             this.timerToLoss.Interval = 10;
             this.timerToLoss.Tick += new System.EventHandler(this.timerToLoss_Tick);
             // 

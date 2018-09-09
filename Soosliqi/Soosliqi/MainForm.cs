@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Soosliqi.Properties;
+using System.Globalization;
 
 namespace Soosliqi
 {
@@ -17,7 +18,6 @@ namespace Soosliqi
         private const int decrement = 100;
         int maxscore = 0;
         int score;
-        int timeLeft;
 
         // Array of pictureBoxes representing clickable holes
         PictureBox[] holes = new PictureBox[16];
@@ -34,6 +34,8 @@ namespace Soosliqi
         private int soosliqCurrentHole = 0;
 
         private int timerInterval = 3000;
+
+        private DateTime prevStartTime = DateTime.Now;
 
         public MainForm()
         {
@@ -75,9 +77,9 @@ namespace Soosliqi
         {
             score = 0;
             MainTimer.Interval = timerInterval;
-            timeLeft = timerInterval;
+            prevStartTime = DateTime.Now;
             MainTimer.Start();
-            
+            timerToLoss.Start();
 
             ChooseActiveHole();
         }
@@ -104,9 +106,10 @@ namespace Soosliqi
                 ChooseActiveHole();
                 MainTimer.Stop();
                 MainTimer.Interval = timerInterval;
+                prevStartTime = DateTime.Now;
                 MainTimer.Start();
                 timerToLoss.Stop();
-                timeLeft = timerInterval;
+               
                 timerToLoss.Start();
             }
         }
@@ -114,6 +117,9 @@ namespace Soosliqi
         private void TimerElapsed(object sender, EventArgs e)
         {
             RequestGameOver(false);
+
+            
+
         }
 
         private void ChooseActiveHole()
@@ -141,6 +147,8 @@ namespace Soosliqi
         private void RequestGameOver(bool condition)
         {
             MainTimer.Stop();
+            timerToLoss.Stop();
+            showtimeToLoss.Text = "0,000";
             holes[soosliqCurrentHole].Image = noraImage; 
             if (condition == true)
             {
@@ -152,6 +160,7 @@ namespace Soosliqi
                 {
                     maxscore = score;
                     MessageBox.Show("Новый рекорд!");
+                    
                     scoreLabel.Text = maxscore.ToString();
                 }
                 
@@ -159,19 +168,31 @@ namespace Soosliqi
                 {
                     MessageBox.Show("Время вышло");
                 }
+
+                RecordSaver saver = new RecordSaver(score);
+                saver.ShowDialog();
             }
         }
         // 
+        
         private void timerToLoss_Tick(object sender, EventArgs e)
         {
-            if (MainTimer.Enabled == true)
+            /*if (MainTimer.Enabled == true)
             {
                 showtimeToLoss.Text = ((double)timeLeft / 1000).ToString();
                 timeLeft -= timerToLoss.Interval;
             }
             else
-                showtimeToLoss.Text = "";
+                showtimeToLoss.Text = "";*/
+            TimeSpan deltaTime = DateTime.Now - prevStartTime;
+            int delta = (int)deltaTime.TotalMilliseconds;
+            int timeLeft = MainTimer.Interval - delta; 
+            showtimeToLoss.Text = (timeLeft / 1000f).ToString();
+
         }
+
+       
+
 
     }
 }
