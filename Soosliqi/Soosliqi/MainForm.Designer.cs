@@ -52,6 +52,9 @@
             this.scoreLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.nowScore = new System.Windows.Forms.Label();
+            this.timerToLoss = new System.Windows.Forms.Timer(this.components);
+            this.showtimeToLoss = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
@@ -73,8 +76,8 @@
             // startGame
             // 
             this.startGame.BackColor = System.Drawing.Color.White;
-            this.startGame.Font = new System.Drawing.Font("Georgia Pro Cond", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.startGame.Location = new System.Drawing.Point(61, 398);
+            this.startGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.startGame.Location = new System.Drawing.Point(61, 498);
             this.startGame.Name = "startGame";
             this.startGame.Size = new System.Drawing.Size(414, 60);
             this.startGame.TabIndex = 16;
@@ -282,7 +285,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Georgia Pro Cond", 20.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(61, 38);
@@ -296,7 +299,7 @@
             // 
             this.scoreLabel.BackColor = System.Drawing.Color.White;
             this.scoreLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.scoreLabel.Font = new System.Drawing.Font("Georgia Pro Cond", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.scoreLabel.Location = new System.Drawing.Point(376, 38);
             this.scoreLabel.Margin = new System.Windows.Forms.Padding(0);
             this.scoreLabel.Name = "scoreLabel";
@@ -308,7 +311,7 @@
             // 
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Georgia Pro Cond", 20.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(61, 84);
@@ -322,7 +325,7 @@
             // 
             this.nowScore.BackColor = System.Drawing.Color.White;
             this.nowScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nowScore.Font = new System.Drawing.Font("Georgia Pro Cond", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nowScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nowScore.Location = new System.Drawing.Point(376, 84);
             this.nowScore.Margin = new System.Windows.Forms.Padding(0);
             this.nowScore.Name = "nowScore";
@@ -330,12 +333,45 @@
             this.nowScore.TabIndex = 20;
             this.nowScore.Text = "     ";
             // 
+            // timerToLoss
+            // 
+            this.timerToLoss.Interval = 10;
+            this.timerToLoss.Tick += new System.EventHandler(this.timerToLoss_Tick);
+            // 
+            // showtimeToLoss
+            // 
+            this.showtimeToLoss.BackColor = System.Drawing.Color.White;
+            this.showtimeToLoss.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.showtimeToLoss.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.showtimeToLoss.Location = new System.Drawing.Point(376, 406);
+            this.showtimeToLoss.Margin = new System.Windows.Forms.Padding(0);
+            this.showtimeToLoss.Name = "showtimeToLoss";
+            this.showtimeToLoss.Size = new System.Drawing.Size(99, 36);
+            this.showtimeToLoss.TabIndex = 22;
+            this.showtimeToLoss.Text = "     ";
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(61, 406);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(309, 36);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "До проигрыша:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(544, 509);
+            this.ClientSize = new System.Drawing.Size(547, 626);
+            this.Controls.Add(this.showtimeToLoss);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.nowScore);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.scoreLabel);
@@ -403,6 +439,9 @@
         private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label nowScore;
+        private System.Windows.Forms.Timer timerToLoss;
+        private System.Windows.Forms.Label showtimeToLoss;
+        private System.Windows.Forms.Label label4;
     }
 }
 
