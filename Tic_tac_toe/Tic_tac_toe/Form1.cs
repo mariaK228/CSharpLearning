@@ -61,13 +61,15 @@ namespace Tic_tac_toe
         private void GamePlay(object sender, EventArgs e)
         {
             int index = GetIndex((PictureBox)sender);
-            
+            bool checkVict;
 
             if (previousPlayer == 0)
             {
                 previousPlayer = 1;
 
                 ChangeImg(previousPlayer, index);
+                CheckVictory();
+
             }
 
             else if (previousPlayer == 1)
@@ -114,6 +116,44 @@ namespace Tic_tac_toe
             }
 
             return -1;
+        }
+
+        private void CheckVictory()
+        {
+            if (pictureBoxes[0].Image == crossImg && pictureBoxes[1].Image == crossImg && pictureBoxes[2].Image == crossImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[3].Image == crossImg && pictureBoxes[4].Image == crossImg && pictureBoxes[5].Image == crossImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[6].Image == crossImg && pictureBoxes[7].Image == crossImg && pictureBoxes[8].Image == crossImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[0].Image == crossImg && pictureBoxes[3].Image == crossImg && pictureBoxes[6].Image == crossImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[1].Image == crossImg && pictureBoxes[4].Image == crossImg && pictureBoxes[7].Image == crossImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[2].Image == crossImg && pictureBoxes[5].Image == crossImg && pictureBoxes[8].Image == crossImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[0].Image == crossImg && pictureBoxes[4].Image == crossImg && pictureBoxes[8].Image == crossImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[2].Image == crossImg && pictureBoxes[4].Image == crossImg && pictureBoxes[6].Image == crossImg)
+                MessageBox.Show("Победа");
+
+            if (pictureBoxes[0].Image == naughtImg && pictureBoxes[1].Image == naughtImg && pictureBoxes[2].Image == naughtImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[3].Image == naughtImg && pictureBoxes[4].Image == naughtImg && pictureBoxes[5].Image == naughtImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[6].Image == naughtImg && pictureBoxes[7].Image == naughtImg && pictureBoxes[8].Image == naughtImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[0].Image == naughtImg && pictureBoxes[3].Image == naughtImg && pictureBoxes[6].Image == naughtImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[1].Image == naughtImg && pictureBoxes[4].Image == naughtImg && pictureBoxes[7].Image == naughtImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[2].Image == naughtImg && pictureBoxes[5].Image == naughtImg && pictureBoxes[8].Image == naughtImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[0].Image == naughtImg && pictureBoxes[4].Image == naughtImg && pictureBoxes[8].Image == naughtImg)
+                MessageBox.Show("Победа");
+            if (pictureBoxes[2].Image == naughtImg && pictureBoxes[4].Image == naughtImg && pictureBoxes[6].Image == naughtImg)
+                MessageBox.Show("Победа");
+ 
         }
         private void button1_Click(object sender, EventArgs e)
         {
