@@ -17,6 +17,7 @@ namespace Tic_tac_toe
         Image crossImg = Resources.cross;
         Image naughtImg = Resources.naught;
         PictureBox[] pictureBoxes;
+        int previousPlayer;
         public Form1()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace Tic_tac_toe
                     box.TabIndex = 13;
                     box.TabStop = false;
                     box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                    box.SizeMode = PictureBoxSizeMode.StretchImage;
                     box.Click += new System.EventHandler(GamePlay);
                     this.Controls.Add(box);
                     
@@ -59,36 +61,39 @@ namespace Tic_tac_toe
         private void GamePlay(object sender, EventArgs e)
         {
             int index = GetIndex((PictureBox)sender);
-            string previousPlayer = "naught";
+            
 
-            if (previousPlayer == "naught")
+            if (previousPlayer == 0)
             {
-                previousPlayer = "cross";
+                previousPlayer = 1;
 
                 ChangeImg(previousPlayer, index);
             }
 
-            else if (previousPlayer == "cross")
+            else if (previousPlayer == 1)
             {
-                previousPlayer = "naught";
+                previousPlayer = 0;
 
                 ChangeImg(previousPlayer, index);
             }
 
             else
-                MessageBox.Show("Error1");
+            {
+                previousPlayer = 0;
+                GamePlay(sender, e);
+            }
 
 
         }
 
-        private void ChangeImg (string player, int index)
+        private void ChangeImg (int player, int index)
         {
-            if (player == "naught")
+            if (player == 0)
             {
                 pictureBoxes[index].Image = naughtImg;
             }
 
-            else if (player == "cross")
+            else if (player == 1)
             {
                 pictureBoxes[index].Image = crossImg;
             }
