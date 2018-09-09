@@ -79,9 +79,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cross.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\cross.png" />
   </ItemGroup>
   <ItemGroup>
