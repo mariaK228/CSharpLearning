@@ -165,7 +165,7 @@ namespace Soosliqi
                 
                 else
                 {
-                    MessageBox.Show("Время вышло");
+                    MessageBox.Show("Игра закончена");
                 }
                 startGame.Enabled = true;
                 RecordSaver saver = new RecordSaver(score);
