@@ -34,7 +34,7 @@ namespace Soosliqi
         private int soosliqCurrentHole = 0;
 
         private int timerInterval = 3000;
-
+        private int timerLossinterval = 10;
         private DateTime prevStartTime = DateTime.Now;
 
         public MainForm()
@@ -75,10 +75,14 @@ namespace Soosliqi
         
         private void startGame_Click(object sender, EventArgs e)
         {
+            startGame.Enabled = false;
             score = 0;
             MainTimer.Interval = timerInterval;
+            timerToLoss.Interval = 10;
             prevStartTime = DateTime.Now;
+            MainTimer.Stop();
             MainTimer.Start();
+            timerToLoss.Stop();
             timerToLoss.Start();
 
             ChooseActiveHole();
@@ -108,8 +112,7 @@ namespace Soosliqi
                 MainTimer.Interval = timerInterval;
                 prevStartTime = DateTime.Now;
                 MainTimer.Start();
-                timerToLoss.Stop();
-               
+                timerToLoss.Stop();            
                 timerToLoss.Start();
             }
         }
@@ -117,9 +120,6 @@ namespace Soosliqi
         private void TimerElapsed(object sender, EventArgs e)
         {
             RequestGameOver(false);
-
-            
-
         }
 
         private void ChooseActiveHole()
@@ -161,14 +161,14 @@ namespace Soosliqi
                     maxscore = score;
                     MessageBox.Show("Новый рекорд!");
                     
-                    scoreLabel.Text = maxscore.ToString();
+                    scoreLabel.Text = maxscore.ToString();                   
                 }
                 
                 else
                 {
                     MessageBox.Show("Время вышло");
                 }
-
+                startGame.Enabled = true;
                 RecordSaver saver = new RecordSaver(score);
                 saver.ShowDialog();
             }
@@ -177,13 +177,6 @@ namespace Soosliqi
         
         private void timerToLoss_Tick(object sender, EventArgs e)
         {
-            /*if (MainTimer.Enabled == true)
-            {
-                showtimeToLoss.Text = ((double)timeLeft / 1000).ToString();
-                timeLeft -= timerToLoss.Interval;
-            }
-            else
-                showtimeToLoss.Text = "";*/
             TimeSpan deltaTime = DateTime.Now - prevStartTime;
             int delta = (int)deltaTime.TotalMilliseconds;
             int timeLeft = MainTimer.Interval - delta; 
