@@ -306,6 +306,7 @@
             this.scoreLabel.Size = new System.Drawing.Size(99, 36);
             this.scoreLabel.TabIndex = 18;
             this.scoreLabel.Text = "     ";
+            
             // 
             // label2
             // 

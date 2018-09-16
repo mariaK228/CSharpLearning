@@ -77,12 +77,11 @@ namespace Soosliqi
         {
             startGame.Enabled = false;
             score = 0;
+            timerInterval = 3000;
             MainTimer.Interval = timerInterval;
-            timerToLoss.Interval = 10;
+            timerToLoss.Interval = timerLossinterval;
             prevStartTime = DateTime.Now;
-            MainTimer.Stop();
             MainTimer.Start();
-            timerToLoss.Stop();
             timerToLoss.Start();
 
             ChooseActiveHole();
@@ -181,7 +180,6 @@ namespace Soosliqi
             int delta = (int)deltaTime.TotalMilliseconds;
             int timeLeft = MainTimer.Interval - delta; 
             showtimeToLoss.Text = (timeLeft / 1000f).ToString();
-
         }
 
        

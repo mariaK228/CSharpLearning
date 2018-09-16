@@ -64,6 +64,7 @@
             // 
             this.top10.Location = new System.Drawing.Point(57, 186);
             this.top10.Name = "top10";
+            this.top10.ReadOnly = true;
             this.top10.Size = new System.Drawing.Size(207, 250);
             this.top10.TabIndex = 3;
             this.top10.Text = "";
