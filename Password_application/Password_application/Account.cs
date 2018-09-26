@@ -70,6 +70,24 @@ namespace Password_application
         {
             // чтение имени пользователя 
             AccFile.Read(UserAcc.UserName, 0, UserAcc.UserName.Length);
+
+            // чтение пароля 
+            AccFile.Read(UserAcc.UserPass, 0, UserAcc.UserPass.Length);
+
+            // выделение памяти под временный буфер  
+            byte[] tmp = new byte[sizeof(int)];
+
+            // чтение и преобразование длины пароля 
+            AccFile.Read(tmp, 0, sizeof(int));
+            UserAcc.PassLen = BitConverter.ToInt32(tmp, 0); 
+
+            // чтение и преобразование признака блокировки учетной записи 
+            AccFile.Read(tmp, 0, sizeof(bool));
+            UserAcc.Block = BitConverter.ToBoolean(tmp, 0);
+
+            // чтение и преобразование признака ограничений на пароль
+            AccFile.Read(tmp, 0, sizeof(bool));
+            UserAcc.Restrict = BitConverter.ToBoolean(tmp, 0);
         }
 
     }

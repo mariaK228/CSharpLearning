@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Password = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Edit1 = new System.Windows.Forms.TextBox();
+            this.Edit2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Password
+            // Edit1
             // 
-            this.Password.Location = new System.Drawing.Point(17, 120);
-            this.Password.Name = "Password";
-            this.Password.PasswordChar = '*';
-            this.Password.Size = new System.Drawing.Size(251, 20);
-            this.Password.TabIndex = 2;
+            this.Edit1.Location = new System.Drawing.Point(17, 120);
+            this.Edit1.Name = "Edit1";
+            this.Edit1.PasswordChar = '*';
+            this.Edit1.Size = new System.Drawing.Size(251, 20);
+            this.Edit1.TabIndex = 2;
             // 
-            // textBox1
+            // Edit2
             // 
-            this.textBox1.Location = new System.Drawing.Point(17, 158);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(251, 20);
-            this.textBox1.TabIndex = 3;
+            this.Edit2.Location = new System.Drawing.Point(17, 158);
+            this.Edit2.Name = "Edit2";
+            this.Edit2.PasswordChar = '*';
+            this.Edit2.Size = new System.Drawing.Size(251, 20);
+            this.Edit2.TabIndex = 3;
             // 
             // button2
             // 
@@ -77,8 +77,8 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.Password);
+            this.Controls.Add(this.Edit2);
+            this.Controls.Add(this.Edit1);
             this.Name = "Form5";
             this.Text = "Смена пароля";
             this.ResumeLayout(false);
@@ -88,8 +88,8 @@
 
         #endregion
 
-        public System.Windows.Forms.TextBox Password;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox Edit1;
+        public System.Windows.Forms.TextBox Edit2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
     }
