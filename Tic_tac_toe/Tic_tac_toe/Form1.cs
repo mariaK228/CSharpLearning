@@ -13,10 +13,15 @@ namespace Tic_tac_toe
 {
     public partial class Form1 : Form
     {
+        const int empty = 0;
+        const int cross = 1;
+        const int naught = 2;
 
+        int victoryLength = 3;
         Image crossImg = Resources.cross;
         Image naughtImg = Resources.naught;
         PictureBox[] pictureBoxes;
+        int[,] matrix = new int[3, 3];
         int previousPlayer;
         public Form1()
         {
@@ -58,44 +63,57 @@ namespace Tic_tac_toe
             }
         }
 
+        private void ConvertToMatrix(int index, out int x, out int y)
+        {
+            y = index / matrix.GetLength(0);
+            x = index - y * matrix.GetLength(0);    
+        }
+
         private void GamePlay(object sender, EventArgs e)
         {
             int index = GetIndex((PictureBox)sender);
-            bool checkVict;
+            int x, y;
+            bool victory = false;
+            ConvertToMatrix(index, out x, out y);
 
-            if (previousPlayer == 0)
+            if (previousPlayer == cross)
             {
-                previousPlayer = 1;
-
+                previousPlayer = naught;
                 ChangeImg(previousPlayer, index);
-                CheckVictory();
+                matrix[x, y] = previousPlayer;
+                victory = CheckVictory(x,y);
 
             }
 
-            else if (previousPlayer == 1)
+            else if (previousPlayer == naught)
             {
-                previousPlayer = 0;
-
+                previousPlayer = cross;
                 ChangeImg(previousPlayer, index);
+                matrix[x, y] = previousPlayer;
+                victory = CheckVictory(x, y);
             }
 
             else
             {
-                previousPlayer = 0;
-                GamePlay(sender, e);
+                previousPlayer = cross;
+              //  GamePlay(sender, e);
+                ChangeImg(previousPlayer, index);
+                matrix[x, y] = previousPlayer;
             }
 
-
+            if (victory == true)
+            MessageBox.Show("Победил игрок с номером " + previousPlayer);
+           
         }
 
         private void ChangeImg (int player, int index)
         {
-            if (player == 0)
+            if (player == naught)
             {
                 pictureBoxes[index].Image = naughtImg;
             }
 
-            else if (player == 1)
+            else if (player == cross)
             {
                 pictureBoxes[index].Image = crossImg;
             }
@@ -118,56 +136,93 @@ namespace Tic_tac_toe
             return -1;
         }
 
-        private void CheckVictory()
+        private bool CheckVictory(int x, int y)
         {
-            if (pictureBoxes[0].Image == crossImg && pictureBoxes[1].Image == crossImg && pictureBoxes[2].Image == crossImg)
-                MessageBox.Show("Победа");
-            if (pictureBoxes[0].Image == naughtImg && pictureBoxes[1].Image == naughtImg && pictureBoxes[2].Image == naughtImg)
-                MessageBox.Show("Победа");
+            int verticalCount = 0;
+            int horizontalCount = 0;
+            int leftDiagonalCount = 0;
+            int rightDiagonalCount = 0;
+            for(int i = y; i >= 0; i--)
+            {
+                if (matrix[x, i] == previousPlayer)
+                {
+                    verticalCount++;
+                }
+                else
+                    break;
+            }
 
+            for (int i = y+1; i < matrix.GetLength(1); i++)
+            {
+                if (matrix[x, i] == previousPlayer)
+                {
+                    verticalCount++;
+                }
+                else
+                    break;
+            }
 
-            if (pictureBoxes[3].Image == crossImg && pictureBoxes[4].Image == crossImg && pictureBoxes[5].Image == crossImg)
-                MessageBox.Show("Победа");
-            if (pictureBoxes[3].Image == naughtImg && pictureBoxes[4].Image == naughtImg && pictureBoxes[5].Image == naughtImg)
-                MessageBox.Show("Победа");
+            for (int i = x; i >= 0; i--)
+            {
+                if (matrix[i, y] == previousPlayer)
+                {
+                    horizontalCount++;
+                }
+                else
+                    break;
+            }
 
+            for (int i = x+1; i < matrix.GetLength(0); i++)
+            {
+                if (matrix[i, y] == previousPlayer)
+                {
+                    horizontalCount++;
+                }
+                else
+                    break;
+            }
 
-            if (pictureBoxes[6].Image == crossImg && pictureBoxes[7].Image == crossImg && pictureBoxes[8].Image == crossImg)
-                MessageBox.Show("Победа");
-            if (pictureBoxes[6].Image == naughtImg && pictureBoxes[7].Image == naughtImg && pictureBoxes[8].Image == naughtImg)
-                MessageBox.Show("Победа");
+            for (int i = x, j = y; i >=0 && j >= 0; i--, j--)
+            {
+                if (matrix[i, j] == previousPlayer)
+                {
+                    rightDiagonalCount++;
+                }
+                else
+                    break;
+            }
 
+            for (int i = x+1, j = y+1; i < matrix.GetLength(0) && j < matrix.GetLength(1); i++, j++)
+            {
+                if (matrix[i, j] == previousPlayer)
+                {
+                    rightDiagonalCount++;
+                }
+                else
+                    break;
+            }
 
-            if (pictureBoxes[0].Image == crossImg && pictureBoxes[3].Image == crossImg && pictureBoxes[6].Image == crossImg)
-                MessageBox.Show("Победа");
-            if (pictureBoxes[0].Image == naughtImg && pictureBoxes[3].Image == naughtImg && pictureBoxes[6].Image == naughtImg)
-                MessageBox.Show("Победа");
+            for (int i = x, j = y; i >= 0 && j < matrix.GetLength(1); i--, j++)
+            {
+                if (matrix[i, j] == previousPlayer)
+                {
+                    leftDiagonalCount++;
+                }
+                else
+                    break;
+            }
 
+            for (int i = x+1, j = y-1; i < matrix.GetLength(0) && j >= 0; i++, j--)
+            {
+                if (matrix[i, j] == previousPlayer)
+                {
+                    leftDiagonalCount++;
+                }
+                else
+                    break;
+            }
 
-            if (pictureBoxes[1].Image == crossImg && pictureBoxes[4].Image == crossImg && pictureBoxes[7].Image == crossImg)
-                MessageBox.Show("Победа");
-            if (pictureBoxes[1].Image == naughtImg && pictureBoxes[4].Image == naughtImg && pictureBoxes[7].Image == naughtImg)
-                MessageBox.Show("Победа");
-
-
-            if (pictureBoxes[2].Image == crossImg && pictureBoxes[5].Image == crossImg && pictureBoxes[8].Image == crossImg)
-                MessageBox.Show("Победа");
-            if (pictureBoxes[2].Image == naughtImg && pictureBoxes[5].Image == naughtImg && pictureBoxes[8].Image == naughtImg)
-                MessageBox.Show("Победа");
-
-
-            if (pictureBoxes[0].Image == crossImg && pictureBoxes[4].Image == crossImg && pictureBoxes[8].Image == crossImg)
-                MessageBox.Show("Победа");
-            if (pictureBoxes[0].Image == naughtImg && pictureBoxes[4].Image == naughtImg && pictureBoxes[8].Image == naughtImg)
-                MessageBox.Show("Победа");
-
-
-            if (pictureBoxes[2].Image == crossImg && pictureBoxes[4].Image == crossImg && pictureBoxes[6].Image == crossImg)
-                MessageBox.Show("Победа");
-
-            if (pictureBoxes[2].Image == naughtImg && pictureBoxes[4].Image == naughtImg && pictureBoxes[6].Image == naughtImg)
-                MessageBox.Show("Победа");
-
+            return verticalCount >= victoryLength || horizontalCount >= victoryLength || rightDiagonalCount >= victoryLength || leftDiagonalCount >= victoryLength;
 
         }
         private void button1_Click(object sender, EventArgs e)
