@@ -36,7 +36,7 @@ namespace Password_application
             //просмотра (редактирования) учетных записей
             if (Acc.AccFile.Length == Acc.RecCount * Acc.AccLen)
                 Next.Enabled = false;
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -84,7 +84,7 @@ namespace Password_application
             // сравнение пароля из учетной записи и введенного пароля
             if (Enter.Password.Text == "" || Enter.Password.Text != Acc.UserAcc.GetPass())
                 // если пароли не совпадают и число попыток превысило 2
-                if (++EnterCount > 2)
+                if (++EnterCount >= 2)
                 {
                     // скрытие кнопки «Вход» 
                     button1.Visible = false;
@@ -104,8 +104,10 @@ namespace Password_application
             // сброс номера уч записи 
             Acc.RecCount = 0;
 
+            bool loginSuccessful = false;
+
             // чтение уч записей и сравнение имен с введенным пользователем именем 
-            while (Acc.AccFile.Position < Acc.AccFile.Length)
+            while (Acc.AccFile.Position < Acc.AccFile.Length && !loginSuccessful)
             {
                 Acc.ReadAccount(); // чтение очередной уч записи
                 Acc.RecCount++; // чтение относительного номера учетной записи 
@@ -115,17 +117,19 @@ namespace Password_application
 
                 // совпадения не найдено (достигнут конец файла)
 
-                if (Enter.Login.Text != accName)
+                if (Enter.Login.Text != accName && Acc.AccFile.Position >= Acc.AccFile.Length)
                     throw new Exception("Вы не зарегистрированы!");
 
                 if (Acc.UserAcc.PassLen == 0)
                 {
                     RequestSetPassword();
+                    loginSuccessful = true;
                 }
                 // если пользователь уже имел пароль
                 else
                 {
                     LogIn();
+                    loginSuccessful = true;
                 }
 
                 // если учетная запись заблокирована администратором

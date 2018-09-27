@@ -33,8 +33,8 @@ namespace Password_application
         public void SetNewPassword(string password)
         {
             byte[] bytes = Encoding.Unicode.GetBytes(password);
-            UserPass = bytes;
-            //bytes.CopyTo(UserPass, 0);
+            //UserPass = bytes;
+            bytes.CopyTo(UserPass, 0);
             PassLen = password.Length;
         }
     }

@@ -65,16 +65,17 @@ namespace Password_application
             pos += sizeof(bool);
 
             // запись буфера с учетной записью в файл 
-            AccFile.Write(buf, 0, pos); 
+            //AccFile.Seek(0, SeekOrigin.Begin);
+            AccFile.Write(buf, 0, pos);
         }
-
+        
         public void ReadAccount()
         {
             // чтение имени пользователя 
-            AccFile.Read(UserAcc.UserName, 0, UserAcc.UserName.Length);
+            AccFile.Read(UserAcc.UserName, 0, MAXNAME * 2);
 
             // чтение пароля 
-            AccFile.Read(UserAcc.UserPass, 0, UserAcc.UserPass.Length);
+            AccFile.Read(UserAcc.UserPass, 0, MAXNAME * 2);
 
             // выделение памяти под временный буфер  
             byte[] tmp = new byte[sizeof(int)];
