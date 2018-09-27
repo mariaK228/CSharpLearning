@@ -35,7 +35,7 @@ namespace Password_application
             UserAcc = new AccountType();
             UserAcc.UserName = new byte[MAXNAME * 2];
             UserAcc.UserPass = new byte[MAXPASS * 2];
-            AccLen = MAXNAME * 2 + MAXPASS * 2 + sizeof(int) + sizeof(bool) * 2;
+            AccLen = MAXNAME * 2 + MAXPASS * 2 + sizeof(int) + sizeof(int) + sizeof(bool) * 2;
             buf = new byte[AccLen];
         }
 
@@ -51,7 +51,9 @@ namespace Password_application
             pos += UserAcc.UserPass.Length;
 
             BitConverter.GetBytes(UserAcc.PassLen).CopyTo(buf, pos);
+            pos += sizeof(int);
 
+            BitConverter.GetBytes(UserAcc.NameLength).CopyTo(buf, pos);
             pos += sizeof(int);
 
             // преобразование и запись признака блокировки учетной записи 
@@ -79,7 +81,11 @@ namespace Password_application
 
             // чтение и преобразование длины пароля 
             AccFile.Read(tmp, 0, sizeof(int));
-            UserAcc.PassLen = BitConverter.ToInt32(tmp, 0); 
+            UserAcc.PassLen = BitConverter.ToInt32(tmp, 0);
+
+            AccFile.Read(tmp, 0, sizeof(int));
+            UserAcc.NameLength = BitConverter.ToInt32(tmp, 0);
+            
 
             // чтение и преобразование признака блокировки учетной записи 
             AccFile.Read(tmp, 0, sizeof(bool));
