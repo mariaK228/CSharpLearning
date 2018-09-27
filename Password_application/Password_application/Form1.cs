@@ -15,7 +15,7 @@ namespace Password_application
     {
         Form2 Enter;
         Form3 List;
-        Form4 Add; 
+        Form4 Add;
         Form5 ChangePass;
 
         public Account Acc; // учетная запись пользователя 
@@ -33,7 +33,7 @@ namespace Password_application
             Add = new Form4();
             ChangePass = new Form5();
 
-            Acc = new Account(); 
+            Acc = new Account();
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -52,8 +52,8 @@ namespace Password_application
 
                 Acc.WriteAccount();
                 Acc.AccFile.Close();
-                Acc.AccFile = null; 
-                EnterCount = 0; 
+                Acc.AccFile = null;
+                EnterCount = 0;
             }
         }
 
@@ -61,7 +61,7 @@ namespace Password_application
         {
             // запрос и проверка имени уч записи и пароля 
 
-            byte[] tmp; // временный буфер для паролей 
+           
             try
             {
                 Enter.Login.Clear();
@@ -111,14 +111,167 @@ namespace Password_application
                                 Encoding.Unicode.GetBytes(ChangePass.Edit1.Text).CopyTo(Acc.UserAcc.UserPass, 0);
                                 Acc.UserAcc.PassLen = ChangePass.Edit1.Text.Length;
 
-
-
+                                // запись в файл учетной записи с начальным паролем
+                                Acc.WriteAccount();
                             }
+                            // если пользователь не ввел пароль, то выход из функции
+                            else return;
                         }
+                        // если пользователь уже имел пароль
+                 else
+                 {
+                 		// сравнение пароля из учетной записи и введенного пароля
+                        if (Enter.Password.Text == "" || Enter.Password.Text != Encoding.Unicode.GetString(Acc.UserAcc.UserPass, 0, Enter.Password.Text.Length * 2))
+                        // если пароли не совпадают и число попыток превысило 2
+                        if (++EnterCount > 2)
+                        {
+                        	// скрытие кнопки «Вход» 
+                              button1.Visible = false;
+                             // генерация исключительной ситуации
+                             throw new Exception("Вход в программу невозможен!");
+                        }
+                        // если пароли не совпадают и число попыток не превысило 2
+                        else
+                        	// генерация исключительной ситуации 
+                        	throw new Exception("Неверный пароль!");
+                        // если пароли совпадают, то продолжение работы
+                        else ;
+                }
+                        // если учетная запись заблокирована администратором
+                if (Acc.UserAcc.Block)
+                	// генерация исключительной ситуации (пользователь заблокирован)
+                  throw new Exception("Вы заблокированы!");
+                // проверка полномочий пользователя
+                // если пользователь является администратором
+                if (Encoding.Unicode.GetString(Acc.UserAcc.UserName, 0, Enter.Login.Text.Length * 2) == "ADMIN")
+                {
+                	// снятие блокировки с команд меню «Все пользователи» и 
+                    // «Новый пользователь» 
+                  All.Enabled = true;
+                  New.Enabled = true;
+                  // закрытие файла с учетными записями
+                  Acc.AccFile.Close();
+                }
+               // снятие блокировки с команды меню «Смена пароля» 
+               Change.Enabled = true;
+               // скрытие кнопки «Вход»
+               button1.Visible = false;
 
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // создание объекта для диалога О программе
+            AboutBox1 ab = new AboutBox1();
+            // выполнение диалога
+            ab.ShowDialog();
+
+        }
+
+        private void Change_Click(object sender, EventArgs e)
+        {
+            // если программа в режиме администратора (команда «Все пользователи»
+            // разблокирована)
+            if (All.Enabled)
+            {
+                // открытие файла с учетными записями для чтения и записи
+                Acc.AccFile = new FileStream(Account.SECFILE, FileMode.Open);
+                // сброс номера текущей учетной записи
+                Acc.RecCount = 0;
+                // чтение учетной записи администратора (первой учетной записи)
+                Acc.ReadAccount();
+                Acc.RecCount++;
+            }
+            // отображение формы для смены пароля
+            if (ChangePass.ShowDialog() == DialogResult.OK)
+            {
+                // смещение к началу текущей учетной записи в файле 
+                Acc.AccFile.Seek((Acc.RecCount - 1) * Acc.AccLen, SeekOrigin.Begin);
+                // помещение в учетную запись нового пароля и его длины
+                Encoding.Unicode.GetBytes(ChangePass.Edit1.Text).CopyTo(Acc.UserAcc.UserPass, 0);
+                Acc.UserAcc.PassLen = ChangePass.Edit1.Text.Length;
+                // запись в файл учетной записи с новым паролем
+                Acc.WriteAccount();
+            }
+            // если программа в режиме администратора, то закрытие файла
+            if (All.Enabled)
+                Acc.AccFile.Close();
+
+        }
+
+        private void New_Click(object sender, EventArgs e)
+        {
+            // открытие файла учетных записей
+            Acc.AccFile = new FileStream(Account.SECFILE, FileMode.Open);
+            // отображение формы для добавления пользователя
+            if (Add.ShowDialog() == DialogResult.OK)
+            {
+                // смещение в конец файла
+                Acc.AccFile.Seek(0, SeekOrigin.End);
+                // сохранение в учетной записи введенного имени пользователя
+                // (с очисткой предыдущего имени)
+                Array.Clear(Acc.UserAcc.UserName, 0, Acc.UserAcc.UserName.Length);
+                Encoding.Unicode.GetBytes(Add.UserName.Text).
+                  CopyTo(Acc.UserAcc.UserName, 0);
+                // подготовка других полей новой учетной запис
+                Encoding.Unicode.GetBytes("").CopyTo(Acc.UserAcc.UserPass, 0);
+                Acc.UserAcc.PassLen = 0;
+                Acc.UserAcc.Block = false;
+                Acc.UserAcc.Restrict = true;
+                // запись в файл учетной записи нового пользователя
+                Acc.WriteAccount();
+            }
+            // закрытие файла
+            Acc.AccFile.Close();
+            // очистка редактора для ввода следующего имени пользователя
+            Add.UserName.Clear();
+
+        }
+
+        private void All_Click(object sender, EventArgs e)
+        {
+            // открытие файла с учетными записями для чтения и записи
+            Acc.AccFile = new FileStream(Account.SECFILE, FileMode.Open);
+            // сброс номера текущей учетной записи
+            Acc.RecCount = 0;
+            // чтение первой учетной записи
+            Acc.ReadAccount();
+            Acc.RecCount++;
+            // отображение имени учетной записи
+            List.UserName.Text = Encoding.Unicode.GetString
+           (Acc.UserAcc.UserName, 0, (int)Acc.UserAcc.UserName.Length);
+            // отображение признака блокировки учетной запис
+            List.checkBox1.Checked = Acc.UserAcc.Block;
+            // отображение признака ограничения на пароль
+            List.checkBox2.Checked = Acc.UserAcc.Restrict;
+            // если следующей учетной записи нет, то блокирование кнопки «Следующий» в окне 
+            //просмотра (редактирования) учетных записей
+            if (Acc.AccFile.Length == Acc.RecCount * Acc.AccLen)
+            {
+                List.Next.Enabled = false;
+                // смещение к началу первой учетной записи
+                Acc.AccFile.Seek(0, SeekOrigin.Begin);
+            }
+            // снятие блокировки с кнопки Следующий
+            else
+                List.Next.Enabled = true;
+            // отображение окна просмотра (редактирования) учетных записей
+            List.ShowDialog();
+            // закрытие файла
+            Acc.AccFile.Close();
+
         }
 
     }

@@ -16,5 +16,17 @@ namespace Password_application
         {
             InitializeComponent();
         }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult == DialogResult.OK && Login.Text == "")
+            {
+                MessageBox.Show("Имя не может быть пустым!", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // обработка события завершена
+                e.Cancel = true;
+            }
+
+        }
     }
 }
