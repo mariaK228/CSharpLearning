@@ -36,7 +36,9 @@
             this.changeUserItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allUsersItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitAccountItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +51,7 @@
             this.logInButton.TabIndex = 0;
             this.logInButton.Text = "Войти в аккаунт";
             this.logInButton.UseVisualStyleBackColor = true;
+            this.logInButton.Click += new System.EventHandler(this.logInButton_Click);
             // 
             // statusStrip1
             // 
@@ -69,7 +72,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.accountsMenu});
+            this.accountsMenu,
+            this.AboutProgramToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(310, 24);
@@ -82,34 +86,56 @@
             this.changeUserItem,
             this.addUserItem,
             this.allUsersItem,
-            this.quitAccountItem});
+            this.changePasswordItem,
+            this.quitItem});
             this.accountsMenu.Name = "accountsMenu";
             this.accountsMenu.Size = new System.Drawing.Size(72, 20);
             this.accountsMenu.Text = "Аккаунты";
             // 
             // changeUserItem
             // 
+            this.changeUserItem.Enabled = false;
             this.changeUserItem.Name = "changeUserItem";
             this.changeUserItem.Size = new System.Drawing.Size(204, 22);
             this.changeUserItem.Text = "Сменить пользователя";
+            this.changeUserItem.Click += new System.EventHandler(this.changeUserItem_Click);
             // 
             // addUserItem
             // 
+            this.addUserItem.Enabled = false;
             this.addUserItem.Name = "addUserItem";
             this.addUserItem.Size = new System.Drawing.Size(204, 22);
             this.addUserItem.Text = "Добавить пользователя";
+            this.addUserItem.Click += new System.EventHandler(this.addUserItem_Click);
             // 
             // allUsersItem
             // 
+            this.allUsersItem.Enabled = false;
             this.allUsersItem.Name = "allUsersItem";
             this.allUsersItem.Size = new System.Drawing.Size(204, 22);
             this.allUsersItem.Text = "Все пользователи";
+            this.allUsersItem.Click += new System.EventHandler(this.allUsersItem_Click);
             // 
-            // quitAccountItem
+            // changePasswordItem
             // 
-            this.quitAccountItem.Name = "quitAccountItem";
-            this.quitAccountItem.Size = new System.Drawing.Size(204, 22);
-            this.quitAccountItem.Text = "Выход из приложения";
+            this.changePasswordItem.Enabled = false;
+            this.changePasswordItem.Name = "changePasswordItem";
+            this.changePasswordItem.Size = new System.Drawing.Size(204, 22);
+            this.changePasswordItem.Text = "Сменить пароль";
+            this.changePasswordItem.Click += new System.EventHandler(this.changePasswordItem_Click);
+            // 
+            // quitItem
+            // 
+            this.quitItem.Name = "quitItem";
+            this.quitItem.Size = new System.Drawing.Size(204, 22);
+            this.quitItem.Text = "Выход ";
+            // 
+            // AboutProgramToolStripMenuItem
+            // 
+            this.AboutProgramToolStripMenuItem.Name = "AboutProgramToolStripMenuItem";
+            this.AboutProgramToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.AboutProgramToolStripMenuItem.Text = "О программе";
+            this.AboutProgramToolStripMenuItem.Click += new System.EventHandler(this.AboutProgramToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -123,6 +149,7 @@
             this.Name = "MainForm";
             this.Text = "Password application";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -142,7 +169,9 @@
         private System.Windows.Forms.ToolStripMenuItem changeUserItem;
         private System.Windows.Forms.ToolStripMenuItem addUserItem;
         private System.Windows.Forms.ToolStripMenuItem allUsersItem;
-        private System.Windows.Forms.ToolStripMenuItem quitAccountItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordItem;
+        private System.Windows.Forms.ToolStripMenuItem AboutProgramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitItem;
     }
 }
 

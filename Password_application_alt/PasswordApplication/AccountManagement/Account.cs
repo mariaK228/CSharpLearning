@@ -1,6 +1,6 @@
 ﻿namespace PasswordApplication.AccountManagement
 {
-    struct Account
+    public struct Account
     {
         private string _username;
         private string _password;

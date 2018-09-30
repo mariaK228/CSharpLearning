@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PasswordApplication.AccountManagement
 {
-    class AccountRegistry
+    public class AccountRegistry
     {
         public const int MaxNameLenght = 20;
         public const int MaxPasswordLength = 20;
@@ -21,7 +21,7 @@ namespace PasswordApplication.AccountManagement
 
         public void ReadAccounts(Stream stream)
         {
-            if(stream.CanSeek)
+            if(stream.CanSeek) // проверка возможности установки курсора записи 
                 stream.Seek(0, SeekOrigin.Begin);
 
             byte[] nameBuffer = new byte[MaxNameLenght * sizeof(char)];
@@ -32,9 +32,9 @@ namespace PasswordApplication.AccountManagement
             while (stream.Position < stream.Length)
             {
                 stream.Read(nameBuffer, 0, MaxNameLenght * sizeof(char)); // Username
-                stream.Read(passBuffer, 0, MaxNameLenght * sizeof(char)); // Password
+                stream.Read(passBuffer, 0, MaxPasswordLength * sizeof(char)); // Password
 
-                stream.Read(infoBuffer, 0, infoBuffer.Length); // Inforamtion
+                stream.Read(infoBuffer, 0, infoBuffer.Length); // Information / 
 
                 int nameLen = BitConverter.ToInt32(infoBuffer, 0);
                 int passLen = BitConverter.ToInt32(infoBuffer, sizeof(int));
@@ -112,7 +112,7 @@ namespace PasswordApplication.AccountManagement
                 return acc;
             }
 
-            throw new ArgumentException(nameof(username), "Аккаунт с таким именем уже существует");
+            throw new ArgumentException((username), "Аккаунт с таким именем уже существует");
         }
 
         public Account ChangePassword(string username, string nPassword)
@@ -127,7 +127,7 @@ namespace PasswordApplication.AccountManagement
                 return nAcc;
             }
 
-            throw new ArgumentException(nameof(username), "Пользователь не зарегистрирован");
+            throw new ArgumentException((username), "Пользователь не зарегистрирован");
         }
 
         public Account SetPasswordRestrictions(string username, bool value)
@@ -142,7 +142,7 @@ namespace PasswordApplication.AccountManagement
                 return nAcc;
             }
 
-            throw new ArgumentException(nameof(username), "Пользователь не зарегистрирован");
+            throw new ArgumentException((username), "Пользователь не зарегистрирован");
         }
 
         public Account SetBanState(string username, bool value)
@@ -157,7 +157,7 @@ namespace PasswordApplication.AccountManagement
                 return nAcc;
             }
 
-            throw new ArgumentException(nameof(username), "Пользователь не зарегистрирован");
+            throw new ArgumentException((username), "Пользователь не зарегистрирован");
         }
 
         private int IndexOf(string username)
@@ -179,5 +179,17 @@ namespace PasswordApplication.AccountManagement
 
             return true;
         }
+
+        public Account FindAccount(string username)
+        {
+            int index = IndexOf(username);
+            if (index != -1)
+                return _accounts[index];
+
+            throw new Exception("Пользователь не найден");
+        }
+
+       
+
     }
 }
