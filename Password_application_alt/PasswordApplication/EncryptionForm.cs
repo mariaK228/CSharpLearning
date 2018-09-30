@@ -21,5 +21,15 @@ namespace PasswordApplication
         {
             return passwordText.Text;
         }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void ncelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

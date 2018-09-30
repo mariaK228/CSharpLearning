@@ -58,6 +58,7 @@
             this.ncelButton.TabIndex = 3;
             this.ncelButton.Text = "Отмена";
             this.ncelButton.UseVisualStyleBackColor = true;
+            this.ncelButton.Click += new System.EventHandler(this.ncelButton_Click);
             // 
             // OkButton
             // 
@@ -67,6 +68,7 @@
             this.OkButton.TabIndex = 4;
             this.OkButton.Text = "Ок";
             this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // EncryptionForm
             // 

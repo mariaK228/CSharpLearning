@@ -9,10 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordApplication.AccountManagement;
-using System.Object;
-using System.IO.Stream;
-using System.Security.Cryptography.CryptoStream;
 using System.Security.Cryptography;
+
 
 namespace PasswordApplication
 {
@@ -28,6 +26,7 @@ namespace PasswordApplication
         private Account currentUser;
 
         private Account[] accMass;
+
         public MainForm()
         {
             InitializeComponent();
@@ -37,24 +36,46 @@ namespace PasswordApplication
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _reg = new AccountRegistry();
+            EncryptionForm encryptionForm = new EncryptionForm();
+            encryptionForm.ShowDialog();
+            var password = encryptionForm.GetPassword();
 
-            FileStream stream;
-
-            if (File.Exists(RegFileName))
+            try
             {
-                stream = new FileStream(RegFileName, FileMode.Open);
-                _reg.ReadAccounts(stream);
+                _reg = new AccountRegistry(password);
+
+                FileStream stream;
+
+                if (File.Exists(RegFileName))
+                {
+                    stream = new FileStream(RegFileName, FileMode.Open);
+                    _reg.ReadAccounts(stream);
+                }
+                else
+                {
+                    stream = new FileStream(RegFileName, FileMode.CreateNew);
+                    _reg.CreateDefaulRegistry(stream);
+
+                    _reg.WriteAccounts(stream);
+                }
+
+                stream.Close();
             }
-            else
+            catch (InvalidDecryptionException ex)
             {
-                stream = new FileStream(RegFileName, FileMode.CreateNew);
-                _reg.CreateDefaulRegistry(stream);
-
-                _reg.WriteAccounts(stream);
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
-
-            stream.Close();
+            catch (CryptographicException ex)
+            {
+                MessageBox.Show("Ошибка расшифровывания.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка обработки расшифрованных данных. Возможно, неверный ключ", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
         private void Login()
@@ -96,8 +117,7 @@ namespace PasswordApplication
                     MessageBox.Show(ex.Message);
                 }
                 countTries++;
-            }
-            while (ok == false && countTries < 3);
+            } while (ok == false && countTries < 3);
             if (!ok)
             {
                 MessageBox.Show("Слишком много попыток");
@@ -105,6 +125,7 @@ namespace PasswordApplication
                 Application.Exit();
             }
         }
+
         private void logInButton_Click(object sender, EventArgs e)
         {
             Login();
@@ -144,7 +165,7 @@ namespace PasswordApplication
 
         private void changePasswordItem_Click(object sender, EventArgs e)
         {
-           
+
             bool restr = currentUser.HasPasswordRestrictions();
             string pass1;
             string pass2;
@@ -154,8 +175,9 @@ namespace PasswordApplication
             {
                 count++;
                 if (count > 1)
-                    if(check == false)
-                    MessageBox.Show("Пароль не соответствует требованиям - заглавные буквы, строчные буквы, знаки препинания");
+                    if (check == false)
+                        MessageBox.Show(
+                            "Пароль не соответствует требованиям - заглавные буквы, строчные буквы, знаки препинания");
                     else
                         MessageBox.Show("Пароли не совпадают");
                 ChangePasswordForm Change = new ChangePasswordForm(currentUser);
@@ -163,8 +185,7 @@ namespace PasswordApplication
                 check = Change.CheckPassword();
                 pass1 = Change.GetPassword();
                 pass2 = Change.GetRepeatPassword();
-            }
-            while (pass1 != pass2 || !check);
+            } while (pass1 != pass2 || !check);
             _reg.ChangePassword(currentUser.GetUsername(), pass1);
             FileStream File = new FileStream(RegFileName, FileMode.Open);
             _reg.WriteAccounts(File);
@@ -193,46 +214,8 @@ namespace PasswordApplication
             about.ShowDialog();
         }
 
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
+    }
 
-            EncryptionForm encrypt = new EncryptionForm();
-            encrypt.ShowDialog();
-            string passw = encrypt.GetPassword();
-            
-           
-        }
-
-        private CryptoStream Crypto (FileStream file, string password)
-        {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            
-            // буфер для случайного начального вектора для блочного шифрования
-            byte[] IV;
-            // объект класса для генерации секретного ключа из парольной фразы
-            PasswordDeriveBytes pdb;
-            // буфер для парольной фразы
-            byte[] pwd;
-            
-            // буфер для случайной примеси к ключу шифрования
-            byte[] randBytes;
-            // буфер для парольной фразы и случайной примеси
-            byte[] buf;
-            
-            // объект для потока шифрования-расшифрования
-            CryptoStream CrStream;
-            // буфер для ввода-вывода данных из файла учетных записей
-            byte[] bytes;
-            // длина буфера ввода-вывода
-            int numBytesToRead;
-
-            try
-            {
-                md5 = CipherMode.ECB;
-            }
-        }
-        }
-
-        }
+}
 
 
