@@ -33,8 +33,10 @@
             this.Next = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+
+            this.checkBoxBan = new System.Windows.Forms.CheckBox();
+            this.checkBoxRestr = new System.Windows.Forms.CheckBox();
+
             this.SuspendLayout();
             // 
             // label1
@@ -61,7 +63,9 @@
             this.Next.TabIndex = 2;
             this.Next.Text = "Следующий";
             this.Next.UseVisualStyleBackColor = true;
-            this.Next.Click += new System.EventHandler(this.SetUser);
+
+            this.Next.Click += new System.EventHandler(this.Next_Click);
+
             // 
             // CancelButton
             // 
@@ -83,33 +87,37 @@
             this.OKButton.Text = "Ок";
             this.OKButton.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+
+            // checkBoxBan
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 75);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(87, 17);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Блокировка";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxBan.AutoSize = true;
+            this.checkBoxBan.Location = new System.Drawing.Point(12, 75);
+            this.checkBoxBan.Name = "checkBoxBan";
+            this.checkBoxBan.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxBan.TabIndex = 13;
+            this.checkBoxBan.Text = "Блокировка";
+            this.checkBoxBan.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkBoxRestr
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(12, 98);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(131, 17);
-            this.checkBox2.TabIndex = 14;
-            this.checkBox2.Text = "Ограничения пароля";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxRestr.AutoSize = true;
+            this.checkBoxRestr.Location = new System.Drawing.Point(12, 98);
+            this.checkBoxRestr.Name = "checkBoxRestr";
+            this.checkBoxRestr.Size = new System.Drawing.Size(131, 17);
+            this.checkBoxRestr.TabIndex = 14;
+            this.checkBoxRestr.Text = "Ограничения пароля";
+            this.checkBoxRestr.UseVisualStyleBackColor = true;
+
             // 
             // ListOfUsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(306, 196);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+
+            this.Controls.Add(this.checkBoxRestr);
+            this.Controls.Add(this.checkBoxBan);
+
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.Next);
@@ -117,6 +125,9 @@
             this.Controls.Add(this.label1);
             this.Name = "ListOfUsersForm";
             this.Text = "ListOfUsersForm";
+
+            this.Load += new System.EventHandler(this.ListOfUsersForm_Load);
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,8 +140,10 @@
         private System.Windows.Forms.Button Next;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button OKButton;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+
+        private System.Windows.Forms.CheckBox checkBoxBan;
+        private System.Windows.Forms.CheckBox checkBoxRestr;
+
 
     }
 }

@@ -13,26 +13,27 @@ namespace PasswordApplication
 {
     public partial class ListOfUsersForm : Form
     {
-        public AccountRegistry account;
+
+        private AccountRegistry account;
         private Account[] accMass;
+        private int p = 0; 
+
         public ListOfUsersForm(AccountRegistry acc)
         {
             InitializeComponent();
             account = acc;
-        }
 
-        public void SetUser(object sender, EventArgs e)
-        {
             accMass = account.GetAccounts();
-            for (int i = 0; i < accMass.Length; i++)
-            {
-                UserName.Text = accMass[i].GetUsername();
-            }
+
+            UpdateData();
+
         }
 
         public bool GetBan()
         {
-            if (checkBox1.Checked)
+
+            if (checkBoxBan.Checked)
+
                 return true;
 
             else
@@ -41,11 +42,45 @@ namespace PasswordApplication
 
         public bool GetRestrictions()
         {
-            if (checkBox2.Checked)
+
+            if (checkBoxRestr.Checked)
+
                 return true;
 
             else
                 return false;
+        }
+
+
+        private void Next_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            p++;
+            if (p >= accMass.Length)
+                p = 0;
+            UserName.Text = accMass[p].GetUsername();
+            UpdateData();
+
+        }
+        private void SaveData()
+        {
+            account.SetBanState(UserName.Text, GetBan());
+            account.SetPasswordRestrictions(UserName.Text, GetRestrictions());
+        }
+        private void ListOfUsersForm_Load(object sender, EventArgs e)
+        {
+            UserName.Text = accMass[0].GetUsername();
+        }
+
+        public string GetCurrentName()
+        {
+            return UserName.Text;
+        }
+
+        private void UpdateData()
+        {
+            checkBoxBan.Checked = accMass[p].IsBanned();
+            checkBoxRestr.Checked = accMass[p].HasPasswordRestrictions();
         }
 
     }

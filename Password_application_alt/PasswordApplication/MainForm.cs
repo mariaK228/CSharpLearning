@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordApplication.AccountManagement;
 
+using System.Security.Cryptography;
+
+
+
 namespace PasswordApplication
 {
     public partial class MainForm : Form
@@ -21,7 +25,8 @@ namespace PasswordApplication
 
         private Random _rnd;
 
-        private Account currentUser; 
+        private Account[] accMass;
+
         public MainForm()
         {
             InitializeComponent();
@@ -31,57 +36,100 @@ namespace PasswordApplication
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _reg = new AccountRegistry();
 
-            FileStream stream;
+            EncryptionForm encryptionForm = new EncryptionForm();
+            encryptionForm.ShowDialog();
+            var password = encryptionForm.GetPassword();
 
-            if (File.Exists(RegFileName))
+            try
             {
-                stream = new FileStream(RegFileName, FileMode.Open);
-                _reg.ReadAccounts(stream);
+                _reg = new AccountRegistry(password);
+
+                FileStream stream;
+
+                if (File.Exists(RegFileName))
+                {
+                    stream = new FileStream(RegFileName, FileMode.Open);
+                    _reg.ReadAccounts(stream);
+                }
+                else
+                {
+                    stream = new FileStream(RegFileName, FileMode.CreateNew);
+                    _reg.CreateDefaulRegistry(stream);
+
+                    _reg.WriteAccounts(stream);
+                }
+
+                stream.Close();
             }
-            else
+            catch (InvalidDecryptionException ex)
             {
-                stream = new FileStream(RegFileName, FileMode.CreateNew);
-                _reg.CreateDefaulRegistry(stream);
-
-                _reg.WriteAccounts(stream);
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
+            catch (CryptographicException ex)
+            {
+                MessageBox.Show("Ошибка расшифровывания.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка обработки расшифрованных данных. Возможно, неверный ключ", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+        }
 
-            stream.Close();
+        private void Login()
+        {
+            int countTries = 0;
+            bool ok = false;
+
+            do
+            {
+                LogInForm Enter = new LogInForm();
+                string username, password;
+                Enter.ShowDialog();
+                username = Enter.GetUserName();
+                password = Enter.GetPassword();
+                try
+                {
+                    Account account = _reg.FindAccount(username);
+                    string checkpass = account.GetPassword();
+
+                    if (checkpass == password)
+                    {
+                        ok = true;
+                        currentUsernameLabel.Text = "Вошел как: " + username;
+                        currentUser = account;
+                        if (username == "ADMIN")
+                            UnblockAdminFunctions();
+
+                        else
+                            UnblockUserFunctions();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Пароль неверный");
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                countTries++;
+            } while (ok == false && countTries < 3);
+            if (!ok)
+            {
+                MessageBox.Show("Слишком много попыток");
+
+                Application.Exit();
+            }
         }
 
         private void logInButton_Click(object sender, EventArgs e)
         {
-            LogInForm Enter = new LogInForm();
-            string username, password;
-            Enter.ShowDialog();
-            username = Enter.GetUserName();
-            password = Enter.GetPassword();
-            try
-            {
-                Account account = _reg.FindAccount(username);
-                string checkpass = account.GetPassword();
-
-                if (checkpass == password)
-                {
-                    currentUser = account;
-                    if (username == "ADMIN")
-                        UnblockAdminFunctions();
-
-                    else
-                        UnblockUserFunctions();
-                }
-                else
-                {
-                    MessageBox.Show("Пароль неверный");
-                }
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            Login();
         }
 
         private void UnblockAdminFunctions()
@@ -101,39 +149,12 @@ namespace PasswordApplication
 
         private void changeUserItem_Click(object sender, EventArgs e)
         {
-            LogInForm Enter = new LogInForm();
-            string username, password;
-            Enter.ShowDialog();
-            username = Enter.GetUserName();
-            password = Enter.GetPassword();
-            try
-            {
-                Account account = _reg.FindAccount(username);
-                string checkpass = account.GetPassword();
-
-                if (checkpass == password)
-                {
-                    currentUser = account;
-                    if (username == "ADMIN")
-                        UnblockAdminFunctions();
-
-                    else
-                        UnblockUserFunctions();
-                }
-                else
-                {
-                    MessageBox.Show("Пароль неверный");
-                }
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            Login();
         }
 
         private void addUserItem_Click(object sender, EventArgs e)
-        {          
+        {
+
             NewUserForm New = new NewUserForm();
             New.ShowDialog();
             string username = New.GetUserName();
@@ -141,33 +162,39 @@ namespace PasswordApplication
             _reg.AddAccount(username);
             FileStream File = new FileStream(RegFileName, FileMode.Open);
             _reg.WriteAccounts(File);
-            File.Close(); 
+
+            File.Close();
+
         }
 
         private void changePasswordItem_Click(object sender, EventArgs e)
         {
-            ChangePasswordForm Change = new ChangePasswordForm(currentUser);
-            Change.ShowDialog();
 
-            string pass1 = Change.GetPassword();
-            string pass2 = Change.GetRepeatPassword();
             bool restr = currentUser.HasPasswordRestrictions();
-            if (pass1 == pass2)
+            string pass1;
+            string pass2;
+            bool check = false;
+            int count = 0;
+            do
             {
-                if (restr)
-                {
-                    bool check = Change.CheckPassword();
-                    if (check)
-                        currentUser = _reg.ChangePassword(currentUser.GetUsername(), pass1);
+                count++;
+                if (count > 1)
+                    if (check == false)
+                        MessageBox.Show(
+                            "Пароль не соответствует требованиям - заглавные буквы, строчные буквы, знаки препинания");
                     else
-                        Change.ShowDialog();
-                }
-                else
-                    currentUser = _reg.ChangePassword(currentUser.GetUsername(), pass1);
-            }
-             FileStream File = new FileStream(RegFileName, FileMode.Open);
-             _reg.WriteAccounts(File);
-             File.Close(); 
+                        MessageBox.Show("Пароли не совпадают");
+                ChangePasswordForm Change = new ChangePasswordForm(currentUser);
+                Change.ShowDialog();
+                check = Change.CheckPassword();
+                pass1 = Change.GetPassword();
+                pass2 = Change.GetRepeatPassword();
+            } while (pass1 != pass2 || !check);
+            _reg.ChangePassword(currentUser.GetUsername(), pass1);
+            FileStream File = new FileStream(RegFileName, FileMode.Open);
+            _reg.WriteAccounts(File);
+            File.Close();
+
         }
 
         private void allUsersItem_Click(object sender, EventArgs e)
@@ -176,11 +203,24 @@ namespace PasswordApplication
             All.ShowDialog();
             bool Ban = All.GetBan();
             bool Restrictions = All.GetRestrictions();
-           currentUser = _reg.SetBanState(currentUser.GetUsername(), Ban);
-           currentUser = _reg.SetPasswordRestrictions(currentUser.GetUsername(), Restrictions);
-           FileStream File = new FileStream(RegFileName, FileMode.Open);
-           _reg.WriteAccounts(File);
-           File.Close(); 
+
+            _reg.SetBanState(All.GetCurrentName(), Ban);
+            _reg.SetPasswordRestrictions(All.GetCurrentName(), Restrictions);
+
+            accMass = _reg.GetAccounts();
+
+            FileStream File = new FileStream(RegFileName, FileMode.Open);
+            _reg.WriteAccounts(File);
+            File.Close();
         }
+
+        private void AboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBoxForm about = new AboutBoxForm();
+            about.ShowDialog();
+        }
+
     }
+
 }
+

@@ -38,7 +38,9 @@
             this.allUsersItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
+            this.AboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +75,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.accountsMenu,
-            this.оПрограммеToolStripMenuItem});
+
+            this.AboutProgramToolStripMenuItem});
+
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(310, 24);
@@ -130,11 +134,14 @@
             this.quitItem.Size = new System.Drawing.Size(204, 22);
             this.quitItem.Text = "Выход ";
             // 
-            // оПрограммеToolStripMenuItem
+
+            // AboutProgramToolStripMenuItem
             // 
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.AboutProgramToolStripMenuItem.Name = "AboutProgramToolStripMenuItem";
+            this.AboutProgramToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.AboutProgramToolStripMenuItem.Text = "О программе";
+            this.AboutProgramToolStripMenuItem.Click += new System.EventHandler(this.AboutProgramToolStripMenuItem_Click);
+
             // 
             // MainForm
             // 
@@ -168,7 +175,9 @@
         private System.Windows.Forms.ToolStripMenuItem addUserItem;
         private System.Windows.Forms.ToolStripMenuItem allUsersItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordItem;
-        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+
+        private System.Windows.Forms.ToolStripMenuItem AboutProgramToolStripMenuItem;
+
         private System.Windows.Forms.ToolStripMenuItem quitItem;
     }
 }
