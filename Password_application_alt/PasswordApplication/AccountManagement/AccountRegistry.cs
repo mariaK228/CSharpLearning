@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace PasswordApplication.AccountManagement
 {
@@ -13,6 +15,7 @@ namespace PasswordApplication.AccountManagement
     {
         public const int MaxNameLenght = 20;
         public const int MaxPasswordLength = 20;
+
 
         private List<Account> _accounts = new List<Account>();
 
@@ -49,6 +52,7 @@ namespace PasswordApplication.AccountManagement
 
             return bytes;
         }
+
 
         public Account AddAccount(string username)
         {
@@ -136,6 +140,7 @@ namespace PasswordApplication.AccountManagement
 
             throw new Exception("Пользователь не найден");
         }
+
 
         public void WriteAccounts(Stream stream)
         {
@@ -315,5 +320,6 @@ namespace PasswordApplication.AccountManagement
 
             return result;
         }
+
     }
 }

@@ -9,7 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordApplication.AccountManagement;
+
 using System.Security.Cryptography;
+
 
 
 namespace PasswordApplication
@@ -23,8 +25,6 @@ namespace PasswordApplication
 
         private Random _rnd;
 
-        private Account currentUser;
-
         private Account[] accMass;
 
         public MainForm()
@@ -36,6 +36,7 @@ namespace PasswordApplication
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             EncryptionForm encryptionForm = new EncryptionForm();
             encryptionForm.ShowDialog();
             var password = encryptionForm.GetPassword();
@@ -153,6 +154,7 @@ namespace PasswordApplication
 
         private void addUserItem_Click(object sender, EventArgs e)
         {
+
             NewUserForm New = new NewUserForm();
             New.ShowDialog();
             string username = New.GetUserName();
@@ -160,7 +162,9 @@ namespace PasswordApplication
             _reg.AddAccount(username);
             FileStream File = new FileStream(RegFileName, FileMode.Open);
             _reg.WriteAccounts(File);
+
             File.Close();
+
         }
 
         private void changePasswordItem_Click(object sender, EventArgs e)
@@ -190,6 +194,7 @@ namespace PasswordApplication
             FileStream File = new FileStream(RegFileName, FileMode.Open);
             _reg.WriteAccounts(File);
             File.Close();
+
         }
 
         private void allUsersItem_Click(object sender, EventArgs e)
@@ -198,6 +203,7 @@ namespace PasswordApplication
             All.ShowDialog();
             bool Ban = All.GetBan();
             bool Restrictions = All.GetRestrictions();
+
             _reg.SetBanState(All.GetCurrentName(), Ban);
             _reg.SetPasswordRestrictions(All.GetCurrentName(), Restrictions);
 
@@ -217,5 +223,4 @@ namespace PasswordApplication
     }
 
 }
-
 

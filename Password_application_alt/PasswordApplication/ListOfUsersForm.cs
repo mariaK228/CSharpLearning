@@ -13,21 +13,27 @@ namespace PasswordApplication
 {
     public partial class ListOfUsersForm : Form
     {
+
         private AccountRegistry account;
         private Account[] accMass;
         private int p = 0; 
+
         public ListOfUsersForm(AccountRegistry acc)
         {
             InitializeComponent();
             account = acc;
+
             accMass = account.GetAccounts();
 
             UpdateData();
+
         }
 
         public bool GetBan()
         {
+
             if (checkBoxBan.Checked)
+
                 return true;
 
             else
@@ -36,12 +42,15 @@ namespace PasswordApplication
 
         public bool GetRestrictions()
         {
+
             if (checkBoxRestr.Checked)
+
                 return true;
 
             else
                 return false;
         }
+
 
         private void Next_Click(object sender, EventArgs e)
         {
@@ -73,5 +82,6 @@ namespace PasswordApplication
             checkBoxBan.Checked = accMass[p].IsBanned();
             checkBoxRestr.Checked = accMass[p].HasPasswordRestrictions();
         }
+
     }
 }
