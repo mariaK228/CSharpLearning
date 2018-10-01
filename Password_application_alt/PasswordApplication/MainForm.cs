@@ -27,6 +27,8 @@ namespace PasswordApplication
 
         private Account[] accMass;
 
+        private Account currentUser;
+
         public MainForm()
         {
             InitializeComponent();
