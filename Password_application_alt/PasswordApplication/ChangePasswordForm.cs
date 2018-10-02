@@ -15,6 +15,8 @@ namespace PasswordApplication
     public partial class ChangePasswordForm : Form
     {
         private Account account;
+        private bool aborted;
+
         public ChangePasswordForm(Account acc)
         {
             account = acc;
@@ -56,6 +58,17 @@ namespace PasswordApplication
                 Punctuation |= Char .IsPunctuation(Edit1.Text[i]);
             }
             return (UpLetter && DownLetter && Punctuation);
+        }
+
+        public bool IsOperationAborted()
+        {
+            return aborted;
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            aborted = true;
+            Close();
         }
     }
 }

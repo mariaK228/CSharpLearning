@@ -177,6 +177,7 @@ namespace PasswordApplication
             string pass2;
             bool check = false;
             int count = 0;
+            bool wasCanceled = false;
             do
             {
                 count++;
@@ -191,12 +192,18 @@ namespace PasswordApplication
                 check = Change.CheckPassword();
                 pass1 = Change.GetPassword();
                 pass2 = Change.GetRepeatPassword();
-            } while (pass1 != pass2 || !check);
-            _reg.ChangePassword(currentUser.GetUsername(), pass1);
-            FileStream File = new FileStream(RegFileName, FileMode.Open);
-            _reg.WriteAccounts(File);
-            File.Close();
 
+                wasCanceled = Change.IsOperationAborted();
+
+            } while ((pass1 != pass2 || !check) && !wasCanceled);
+
+            if (!wasCanceled)
+            {
+                _reg.ChangePassword(currentUser.GetUsername(), pass1);
+                FileStream File = new FileStream(RegFileName, FileMode.Open);
+                _reg.WriteAccounts(File);
+                File.Close();
+            }
         }
 
         private void allUsersItem_Click(object sender, EventArgs e)
