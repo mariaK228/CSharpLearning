@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.passwordText = new System.Windows.Forms.TextBox();
-            this.ncelButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.OkButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -50,15 +50,14 @@
             this.passwordText.Size = new System.Drawing.Size(425, 20);
             this.passwordText.TabIndex = 2;
             // 
-            // ncelButton
+            // CancelButton
             // 
-            this.ncelButton.Location = new System.Drawing.Point(235, 56);
-            this.ncelButton.Name = "ncelButton";
-            this.ncelButton.Size = new System.Drawing.Size(202, 23);
-            this.ncelButton.TabIndex = 3;
-            this.ncelButton.Text = "Отмена";
-            this.ncelButton.UseVisualStyleBackColor = true;
-            this.ncelButton.Click += new System.EventHandler(this.ncelButton_Click);
+            this.CancelButton.Location = new System.Drawing.Point(235, 56);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(202, 23);
+            this.CancelButton.TabIndex = 3;
+            this.CancelButton.Text = "Отмена";
+            this.CancelButton.UseVisualStyleBackColor = true;
             // 
             // OkButton
             // 
@@ -76,7 +75,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 103);
             this.Controls.Add(this.OkButton);
-            this.Controls.Add(this.ncelButton);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.passwordText);
             this.Controls.Add(this.label1);
             this.Name = "EncryptionForm";
@@ -90,7 +89,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox passwordText;
-        private System.Windows.Forms.Button ncelButton;
+        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button OkButton;
     }
 }
