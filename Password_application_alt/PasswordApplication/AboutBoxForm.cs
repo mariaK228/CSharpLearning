@@ -7,15 +7,15 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Password_application
+namespace PasswordApplication
 {
-    partial class AboutBox1 : Form
+    partial class AboutBoxForm : Form
     {
-        public AboutBox1()
+        public AboutBoxForm()
         {
             InitializeComponent();
             this.Text = String.Format("О программе {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
+            this.labelProductName.Text = "Королёва Мария ИЭ-65-16";
             this.labelVersion.Text = String.Format("Версия {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
