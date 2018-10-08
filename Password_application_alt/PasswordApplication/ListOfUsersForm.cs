@@ -14,37 +14,55 @@ namespace PasswordApplication
     public partial class ListOfUsersForm : Form
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         private AccountRegistry account;
         private Account[] accMass;
         private int p = 0; 
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
         private AccountRegistry account;
         private Account[] accMass;
         private int p = 0; 
 
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
         public ListOfUsersForm(AccountRegistry acc)
         {
             InitializeComponent();
             account = acc;
 <<<<<<< HEAD
+<<<<<<< HEAD
             accMass = account.GetAccounts();
 
             UpdateData();
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
             accMass = account.GetAccounts();
 
             UpdateData();
 
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
         }
 
         public bool GetBan()
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (checkBoxBan.Checked)
+=======
+
+            if (checkBoxBan.Checked)
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
             if (checkBoxBan.Checked)
@@ -59,7 +77,13 @@ namespace PasswordApplication
         public bool GetRestrictions()
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (checkBoxRestr.Checked)
+=======
+
+            if (checkBoxRestr.Checked)
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
             if (checkBoxRestr.Checked)
@@ -72,6 +96,10 @@ namespace PasswordApplication
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -106,6 +134,10 @@ namespace PasswordApplication
             checkBoxRestr.Checked = accMass[p].HasPasswordRestrictions();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da

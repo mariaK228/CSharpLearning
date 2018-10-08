@@ -34,13 +34,19 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.checkBoxBan = new System.Windows.Forms.CheckBox();
             this.checkBoxRestr = new System.Windows.Forms.CheckBox();
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
             this.checkBoxBan = new System.Windows.Forms.CheckBox();
             this.checkBoxRestr = new System.Windows.Forms.CheckBox();
 
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
             this.SuspendLayout();
             // 
@@ -69,7 +75,13 @@
             this.Next.Text = "Следующий";
             this.Next.UseVisualStyleBackColor = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.Next.Click += new System.EventHandler(this.Next_Click);
+=======
+
+            this.Next.Click += new System.EventHandler(this.Next_Click);
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
             this.Next.Click += new System.EventHandler(this.Next_Click);
@@ -97,6 +109,10 @@
             this.OKButton.UseVisualStyleBackColor = true;
             // 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -120,6 +136,10 @@
             this.checkBoxRestr.Text = "Ограничения пароля";
             this.checkBoxRestr.UseVisualStyleBackColor = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -130,13 +150,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(306, 196);
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.Controls.Add(this.checkBoxRestr);
             this.Controls.Add(this.checkBoxBan);
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
             this.Controls.Add(this.checkBoxRestr);
             this.Controls.Add(this.checkBoxBan);
 
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
@@ -146,7 +172,13 @@
             this.Name = "ListOfUsersForm";
             this.Text = "ListOfUsersForm";
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.Load += new System.EventHandler(this.ListOfUsersForm_Load);
+=======
+
+            this.Load += new System.EventHandler(this.ListOfUsersForm_Load);
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
             this.Load += new System.EventHandler(this.ListOfUsersForm_Load);
@@ -165,15 +197,21 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button OKButton;
 <<<<<<< HEAD
+<<<<<<< HEAD
         private System.Windows.Forms.CheckBox checkBoxBan;
         private System.Windows.Forms.CheckBox checkBoxRestr;
 
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
         private System.Windows.Forms.CheckBox checkBoxBan;
         private System.Windows.Forms.CheckBox checkBoxRestr;
 
 
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
     }
 }

@@ -28,9 +28,15 @@ namespace PasswordApplication
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         private void CancelButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+=======
+        private void ncelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
         private void ncelButton_Click(object sender, EventArgs e)
         {

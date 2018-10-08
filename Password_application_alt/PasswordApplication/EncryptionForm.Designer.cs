@@ -48,7 +48,10 @@
             this.passwordText.Location = new System.Drawing.Point(12, 30);
             this.passwordText.Name = "passwordText";
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.passwordText.PasswordChar = '*';
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
             this.passwordText.Size = new System.Drawing.Size(425, 20);
@@ -63,7 +66,10 @@
             this.CancelButton.Text = "Отмена";
             this.CancelButton.UseVisualStyleBackColor = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
             // 

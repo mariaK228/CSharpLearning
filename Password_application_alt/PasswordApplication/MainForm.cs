@@ -10,20 +10,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordApplication.AccountManagement;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using System.Security.Cryptography;
 
 
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
 using System.Security.Cryptography;
 
 
 
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 namespace PasswordApplication
 {
     public partial class MainForm : Form
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         // имя файла
         private const string RegFileName = "accounts.db";
@@ -37,6 +44,8 @@ namespace PasswordApplication
         private Account[] accMass;
 
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
         private const string RegFileName = "accounts.db";
 
@@ -48,6 +57,9 @@ namespace PasswordApplication
 
         private Account currentUser;
 
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
         public MainForm()
         {
@@ -59,7 +71,11 @@ namespace PasswordApplication
         private void MainForm_Load(object sender, EventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             // открытие формы с паролем 
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -73,6 +89,7 @@ namespace PasswordApplication
 
                 FileStream stream;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 // если файл существует
                 if (File.Exists(RegFileName))
                 {
@@ -80,19 +97,28 @@ namespace PasswordApplication
                     stream = new FileStream(RegFileName, FileMode.Open);
                     // считать аккаунты из файла
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
                 if (File.Exists(RegFileName))
                 {
                     stream = new FileStream(RegFileName, FileMode.Open);
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
                     _reg.ReadAccounts(stream);
                 }
                 else
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     // иначе создать новый файл
                     stream = new FileStream(RegFileName, FileMode.CreateNew);
                     // добавить админа 
+=======
+                    stream = new FileStream(RegFileName, FileMode.CreateNew);
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
                     stream = new FileStream(RegFileName, FileMode.CreateNew);
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -104,7 +130,10 @@ namespace PasswordApplication
                 stream.Close();
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
               // ошибки, связанные с расшифрованием   
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
             catch (InvalidDecryptionException ex)
@@ -113,7 +142,10 @@ namespace PasswordApplication
                 Application.Exit();
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
                 // не удалось расшифровать 
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
             catch (CryptographicException ex)
@@ -124,7 +156,11 @@ namespace PasswordApplication
             catch (Exception ex)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 MessageBox.Show("Ошибка обработки расшифрованных данных. Возможно, неверный или пустой ключ", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+=======
+                MessageBox.Show("Ошибка обработки расшифрованных данных. Возможно, неверный ключ", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
                 MessageBox.Show("Ошибка обработки расшифрованных данных. Возможно, неверный ключ", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -132,6 +168,7 @@ namespace PasswordApplication
             }
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         // метод для входа 
         private void Login()
@@ -187,6 +224,8 @@ namespace PasswordApplication
                     }
                     // если пароль неверный 
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
         private void Login()
         {
             int countTries = 0;
@@ -215,6 +254,9 @@ namespace PasswordApplication
                         else
                             UnblockUserFunctions();
                     }
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
                     else
                     {
@@ -222,7 +264,11 @@ namespace PasswordApplication
                     }
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
                     
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -230,6 +276,7 @@ namespace PasswordApplication
                 {
                     MessageBox.Show(ex.Message);
                 }
+<<<<<<< HEAD
 <<<<<<< HEAD
                 // счет попыток входа 
                 countTries++;
@@ -298,6 +345,8 @@ namespace PasswordApplication
         }
         // права админа 
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
                 countTries++;
             } while (ok == false && countTries < 3);
             if (!ok)
@@ -313,6 +362,9 @@ namespace PasswordApplication
             Login();
         }
 
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
         private void UnblockAdminFunctions()
         {
@@ -322,6 +374,7 @@ namespace PasswordApplication
             addUserItem.Enabled = true;
             logInButton.Enabled = false;
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
         // права пользователя 
         private void UnblockUserFunctions()
@@ -399,6 +452,8 @@ namespace PasswordApplication
             if (!wasCanceled)
             {
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
         private void UnblockUserFunctions()
         {
@@ -457,12 +512,16 @@ namespace PasswordApplication
             if (!wasCanceled)
             {
                 _reg.ChangePassword(currentUser.GetUsername(), pass1);
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
                 FileStream File = new FileStream(RegFileName, FileMode.Open);
                 _reg.WriteAccounts(File);
                 File.Close();
             }
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
         // смена пароля 
         private void changePasswordItem_Click(object sender, EventArgs e)
@@ -482,6 +541,8 @@ namespace PasswordApplication
             bool Restrictions = All.GetRestrictions();
             // добавление новых сведений в аккаунт 
 =======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
         private void allUsersItem_Click(object sender, EventArgs e)
         {
@@ -490,13 +551,20 @@ namespace PasswordApplication
             bool Ban = All.GetBan();
             bool Restrictions = All.GetRestrictions();
 
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
             _reg.SetBanState(All.GetCurrentName(), Ban);
             _reg.SetPasswordRestrictions(All.GetCurrentName(), Restrictions);
 
             accMass = _reg.GetAccounts();
 <<<<<<< HEAD
+<<<<<<< HEAD
             // запись в файл 
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -505,7 +573,11 @@ namespace PasswordApplication
             File.Close();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         // форма О программе 
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -515,11 +587,14 @@ namespace PasswordApplication
             about.ShowDialog();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Кнопка выход 
         private void quitItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
@@ -528,6 +603,9 @@ namespace PasswordApplication
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da

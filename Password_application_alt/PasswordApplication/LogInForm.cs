@@ -12,8 +12,12 @@ namespace PasswordApplication
 {
     public partial class LogInForm : Form
 <<<<<<< HEAD
+<<<<<<< HEAD
     {
         private bool aborted;
+=======
+    { 
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
     { 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
@@ -33,6 +37,7 @@ namespace PasswordApplication
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         public bool IsOperationAborted()
         {
             return aborted;
@@ -48,6 +53,11 @@ namespace PasswordApplication
         {
             if (Login.Text == "")
                 MessageBox.Show("Введен пустой логин");
+=======
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
         private void CancelButton_Click(object sender, EventArgs e)
         {

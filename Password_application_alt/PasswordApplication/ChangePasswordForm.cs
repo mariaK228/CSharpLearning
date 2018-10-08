@@ -17,6 +17,10 @@ namespace PasswordApplication
         private Account account;
         private bool aborted;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
