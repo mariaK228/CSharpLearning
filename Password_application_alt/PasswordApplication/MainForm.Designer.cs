@@ -38,7 +38,23 @@
             this.allUsersItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitItem = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< HEAD
             this.AboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.AboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+
+            this.AboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+
+            this.AboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +89,23 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.accountsMenu,
+<<<<<<< HEAD
             this.AboutProgramToolStripMenuItem});
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.AboutProgramToolStripMenuItem});
+=======
+
+            this.AboutProgramToolStripMenuItem});
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+
+            this.AboutProgramToolStripMenuItem});
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(310, 24);
@@ -129,13 +161,38 @@
             this.quitItem.Name = "quitItem";
             this.quitItem.Size = new System.Drawing.Size(204, 22);
             this.quitItem.Text = "Выход ";
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.quitItem.Click += new System.EventHandler(this.quitItem_Click);
             // 
+=======
+            // 
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+            // 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             // AboutProgramToolStripMenuItem
             // 
             this.AboutProgramToolStripMenuItem.Name = "AboutProgramToolStripMenuItem";
             this.AboutProgramToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.AboutProgramToolStripMenuItem.Text = "О программе";
             this.AboutProgramToolStripMenuItem.Click += new System.EventHandler(this.AboutProgramToolStripMenuItem_Click);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             // 
             // MainForm
             // 
@@ -147,7 +204,15 @@
             this.Controls.Add(this.logInButton);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.Text = "Лабораторная работа";
+=======
             this.Text = "Password application";
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+            this.Text = "Password application";
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -160,7 +225,14 @@
 
         #endregion
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
         private System.Windows.Forms.Button logInButton;
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+        private System.Windows.Forms.Button logInButton;
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel currentUsernameLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -169,8 +241,24 @@
         private System.Windows.Forms.ToolStripMenuItem addUserItem;
         private System.Windows.Forms.ToolStripMenuItem allUsersItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordItem;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
         private System.Windows.Forms.ToolStripMenuItem AboutProgramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitItem;
+        public System.Windows.Forms.Button logInButton;
+=======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
+        private System.Windows.Forms.ToolStripMenuItem AboutProgramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitItem;
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
     }
 }
 

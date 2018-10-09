@@ -47,11 +47,19 @@
             // 
             this.passwordText.Location = new System.Drawing.Point(12, 30);
             this.passwordText.Name = "passwordText";
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.passwordText.PasswordChar = '*';
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
             this.passwordText.Size = new System.Drawing.Size(425, 20);
             this.passwordText.TabIndex = 2;
             // 
             // ncelButton
             // 
+<<<<<<< HEAD
             this.ncelButton.Location = new System.Drawing.Point(235, 56);
             this.ncelButton.Name = "ncelButton";
             this.ncelButton.Size = new System.Drawing.Size(202, 23);
@@ -59,6 +67,21 @@
             this.ncelButton.Text = "Отмена";
             this.ncelButton.UseVisualStyleBackColor = true;
             this.ncelButton.Click += new System.EventHandler(this.ncelButton_Click);
+=======
+            this.CancelButton.Location = new System.Drawing.Point(235, 56);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(202, 23);
+            this.CancelButton.TabIndex = 3;
+            this.CancelButton.Text = "Отмена";
+            this.CancelButton.UseVisualStyleBackColor = true;
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             // 
             // OkButton
             // 

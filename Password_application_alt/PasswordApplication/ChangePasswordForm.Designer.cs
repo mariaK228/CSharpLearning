@@ -39,18 +39,56 @@
             // CancelButton
             // 
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+<<<<<<< HEAD
             this.CancelButton.Location = new System.Drawing.Point(179, 86);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(148, 23);
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.CancelButton.Location = new System.Drawing.Point(179, 86);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(148, 23);
+=======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+            this.CancelButton.Location = new System.Drawing.Point(268, 132);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(222, 35);
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.CancelButton.TabIndex = 16;
             this.CancelButton.Text = "Отмена";
             this.CancelButton.UseVisualStyleBackColor = true;
             // 
             // OKButton
             // 
+<<<<<<< HEAD
             this.OKButton.Location = new System.Drawing.Point(12, 86);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(161, 23);
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.OKButton.Location = new System.Drawing.Point(12, 86);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(161, 23);
+=======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+            this.OKButton.Location = new System.Drawing.Point(18, 132);
+            this.OKButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(242, 35);
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.OKButton.TabIndex = 15;
             this.OKButton.Text = "Ок";
             this.OKButton.UseVisualStyleBackColor = true;
@@ -58,47 +96,154 @@
             // 
             // Edit2
             // 
+<<<<<<< HEAD
             this.Edit2.Location = new System.Drawing.Point(126, 60);
             this.Edit2.Name = "Edit2";
             this.Edit2.Size = new System.Drawing.Size(201, 20);
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.Edit2.Location = new System.Drawing.Point(126, 60);
+            this.Edit2.Name = "Edit2";
+            this.Edit2.PasswordChar = '*';
+            this.Edit2.Size = new System.Drawing.Size(201, 20);
+=======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+            this.Edit2.Location = new System.Drawing.Point(189, 92);
+            this.Edit2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Edit2.Name = "Edit2";
+            this.Edit2.Size = new System.Drawing.Size(300, 26);
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.Edit2.TabIndex = 14;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+<<<<<<< HEAD
             this.label2.Location = new System.Drawing.Point(8, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 13);
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.label2.Location = new System.Drawing.Point(8, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 13);
+=======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+            this.label2.Location = new System.Drawing.Point(12, 103);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(174, 20);
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.label2.TabIndex = 13;
             this.label2.Text = "Подтвердите пароль";
             // 
             // Edit1
             // 
+<<<<<<< HEAD
             this.Edit1.Location = new System.Drawing.Point(126, 27);
             this.Edit1.Name = "Edit1";
             this.Edit1.Size = new System.Drawing.Size(201, 20);
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.Edit1.Location = new System.Drawing.Point(126, 27);
+            this.Edit1.Name = "Edit1";
+            this.Edit1.PasswordChar = '*';
+            this.Edit1.Size = new System.Drawing.Size(201, 20);
+=======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+            this.Edit1.Location = new System.Drawing.Point(189, 42);
+            this.Edit1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Edit1.Name = "Edit1";
+            this.Edit1.Size = new System.Drawing.Size(300, 26);
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.Edit1.TabIndex = 12;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+<<<<<<< HEAD
             this.label1.Location = new System.Drawing.Point(40, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.label1.Location = new System.Drawing.Point(40, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+=======
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+            this.label1.Location = new System.Drawing.Point(60, 52);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 20);
+<<<<<<< HEAD
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.label1.TabIndex = 11;
             this.label1.Text = "Новый пароль";
             // 
             // ChangePasswordForm
             // 
+<<<<<<< HEAD
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 140);
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(339, 140);
+=======
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(508, 215);
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(508, 215);
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.Edit2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Edit1);
             this.Controls.Add(this.label1);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.Name = "ChangePasswordForm";
             this.Text = "ChangePasswordForm";
             this.ResumeLayout(false);

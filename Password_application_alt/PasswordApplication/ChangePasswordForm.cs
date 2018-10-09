@@ -15,6 +15,18 @@ namespace PasswordApplication
     public partial class ChangePasswordForm : Form
     {
         private Account account;
+<<<<<<< HEAD
+=======
+        private bool aborted;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+=======
+
+>>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
         public ChangePasswordForm(Account acc)
         {
             account = acc;
