@@ -10,6 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordApplication.AccountManagement;
 <<<<<<< HEAD
+using System.Security.Cryptography;
+
+
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 using System.Security.Cryptography;
 
@@ -26,6 +31,7 @@ using System.Security.Cryptography;
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
 namespace PasswordApplication
 {
     public partial class MainForm : Form
@@ -53,14 +59,17 @@ namespace PasswordApplication
 
         private Random _rnd;
 
-        private Account[] accMass;
-
         private Account currentUser;
 
+<<<<<<< HEAD
+        private Account[] accMass;
+
+=======
 <<<<<<< HEAD
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
         public MainForm()
         {
             InitializeComponent();
@@ -71,6 +80,8 @@ namespace PasswordApplication
         private void MainForm_Load(object sender, EventArgs e)
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
             // открытие формы с паролем 
 =======
@@ -79,6 +90,7 @@ namespace PasswordApplication
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             EncryptionForm encryptionForm = new EncryptionForm();
             encryptionForm.ShowDialog();
             var password = encryptionForm.GetPassword();
@@ -468,7 +480,6 @@ namespace PasswordApplication
 
         private void addUserItem_Click(object sender, EventArgs e)
         {
-
             NewUserForm New = new NewUserForm();
             New.ShowDialog();
             string username = New.GetUserName();
@@ -476,9 +487,7 @@ namespace PasswordApplication
             _reg.AddAccount(username);
             FileStream File = new FileStream(RegFileName, FileMode.Open);
             _reg.WriteAccounts(File);
-
             File.Close();
-
         }
 
         private void changePasswordItem_Click(object sender, EventArgs e)
@@ -489,7 +498,6 @@ namespace PasswordApplication
             string pass2;
             bool check = false;
             int count = 0;
-            bool wasCanceled = false;
             do
             {
                 count++;
@@ -504,6 +512,13 @@ namespace PasswordApplication
                 check = Change.CheckPassword();
                 pass1 = Change.GetPassword();
                 pass2 = Change.GetRepeatPassword();
+<<<<<<< HEAD
+            } while (pass1 != pass2 || !check);
+            _reg.ChangePassword(currentUser.GetUsername(), pass1);
+            FileStream File = new FileStream(RegFileName, FileMode.Open);
+            _reg.WriteAccounts(File);
+            File.Close();
+=======
 
                 wasCanceled = Change.IsOperationAborted();
 
@@ -520,6 +535,7 @@ namespace PasswordApplication
                 _reg.WriteAccounts(File);
                 File.Close();
             }
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -539,6 +555,8 @@ namespace PasswordApplication
             bool Ban = All.GetBan();
             // и ограничения на пароль 
             bool Restrictions = All.GetRestrictions();
+<<<<<<< HEAD
+=======
             // добавление новых сведений в аккаунт 
 =======
 =======
@@ -555,6 +573,7 @@ namespace PasswordApplication
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             _reg.SetBanState(All.GetCurrentName(), Ban);
             _reg.SetPasswordRestrictions(All.GetCurrentName(), Restrictions);
 
@@ -603,9 +622,13 @@ namespace PasswordApplication
 }
 
 <<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753

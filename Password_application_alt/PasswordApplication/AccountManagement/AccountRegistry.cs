@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -10,12 +12,15 @@ using System.Linq;
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -23,6 +28,7 @@ using System.Windows.Forms;
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
 namespace PasswordApplication.AccountManagement
 {
     public class AccountRegistry
@@ -40,11 +46,14 @@ namespace PasswordApplication.AccountManagement
         public const int MaxNameLenght = 20;
         public const int MaxPasswordLength = 20;
 
+<<<<<<< HEAD
+=======
 
 <<<<<<< HEAD
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
         private List<Account> _accounts = new List<Account>();
 
         private string _cryptoPassword;
@@ -103,6 +112,8 @@ namespace PasswordApplication.AccountManagement
         }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
         // добавление аккаунта 
         public Account AddAccount(string username)
@@ -120,6 +131,7 @@ namespace PasswordApplication.AccountManagement
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
         public Account AddAccount(string username)
         {
             Account acc = new Account(username, "", false, false);
@@ -242,6 +254,8 @@ namespace PasswordApplication.AccountManagement
         }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -249,6 +263,7 @@ namespace PasswordApplication.AccountManagement
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
         public void WriteAccounts(Stream stream)
         {
             if (stream.CanSeek)
@@ -521,6 +536,8 @@ namespace PasswordApplication.AccountManagement
             return result;
         }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -528,5 +545,6 @@ namespace PasswordApplication.AccountManagement
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
     }
 }

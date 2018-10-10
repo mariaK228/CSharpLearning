@@ -34,6 +34,10 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
 <<<<<<< HEAD
+            this.checkBoxBan = new System.Windows.Forms.CheckBox();
+            this.checkBoxRestr = new System.Windows.Forms.CheckBox();
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
             this.checkBoxBan = new System.Windows.Forms.CheckBox();
             this.checkBoxRestr = new System.Windows.Forms.CheckBox();
@@ -48,6 +52,7 @@
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.SuspendLayout();
             // 
             // label1
@@ -75,6 +80,9 @@
             this.Next.Text = "Следующий";
             this.Next.UseVisualStyleBackColor = true;
 <<<<<<< HEAD
+            this.Next.Click += new System.EventHandler(this.Next_Click);
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
             this.Next.Click += new System.EventHandler(this.Next_Click);
 =======
@@ -87,6 +95,7 @@
             this.Next.Click += new System.EventHandler(this.Next_Click);
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             // 
             // CancelButton
             // 
@@ -109,6 +118,8 @@
             this.OKButton.UseVisualStyleBackColor = true;
             // 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -116,6 +127,7 @@
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             // checkBoxBan
             // 
             this.checkBoxBan.AutoSize = true;
@@ -136,6 +148,8 @@
             this.checkBoxRestr.Text = "Ограничения пароля";
             this.checkBoxRestr.UseVisualStyleBackColor = true;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -143,6 +157,7 @@
 =======
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             // 
             // ListOfUsersForm
             // 
@@ -150,6 +165,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(306, 196);
 <<<<<<< HEAD
+            this.Controls.Add(this.checkBoxRestr);
+            this.Controls.Add(this.checkBoxBan);
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
             this.Controls.Add(this.checkBoxRestr);
             this.Controls.Add(this.checkBoxBan);
@@ -164,6 +183,7 @@
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.Next);
@@ -172,6 +192,9 @@
             this.Name = "ListOfUsersForm";
             this.Text = "ListOfUsersForm";
 <<<<<<< HEAD
+            this.Load += new System.EventHandler(this.ListOfUsersForm_Load);
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
             this.Load += new System.EventHandler(this.ListOfUsersForm_Load);
 =======
@@ -184,6 +207,7 @@
             this.Load += new System.EventHandler(this.ListOfUsersForm_Load);
 
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,6 +221,11 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button OKButton;
 <<<<<<< HEAD
+        private System.Windows.Forms.CheckBox checkBoxBan;
+        private System.Windows.Forms.CheckBox checkBoxRestr;
+
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
         private System.Windows.Forms.CheckBox checkBoxBan;
         private System.Windows.Forms.CheckBox checkBoxRestr;
@@ -213,5 +242,6 @@
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
 =======
 >>>>>>> 850614c7c8ca3cd0ee83f73b738054ea578055da
+>>>>>>> 6a8d6168a7affff0dbf8d63bd8a6f24ddd02b753
     }
 }
