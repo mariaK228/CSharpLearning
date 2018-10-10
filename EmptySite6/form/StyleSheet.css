@@ -1,0 +1,146 @@
+﻿body {
+    background-color: #BF6F40;
+}
+
+.menu {
+    text-align: center;
+    background-color: #2E120F;
+}
+
+
+.menu__links-item {
+    display: inline-block;
+    color: #fff;
+    font-family: 'Snell Roundhand';
+    font-style: italic;
+    font-size: 1.5vw;
+    line-height: 30px;
+    padding: 0 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.menu__links-item:hover {
+    text-decoration: underline;
+}
+
+
+.menu.menu_state_open .menu__links {
+  display: block;  
+}
+
+@media screen and (max-width: 999px) {
+  
+  .menu__links {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin-top: 52px;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow: auto;
+  }
+  
+  .menu__links-item {
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+div.logo img 
+{
+   
+  height: 100%;
+  padding-left: 7%;
+  position: absolute;
+}
+
+div.title
+{
+    font-family: 'Brush Script MT';
+    font-style: italic;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 5vw;
+    padding-left: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: absolute;
+    
+}
+div.title a 
+{
+    text-decoration: none;
+        text-shadow: 0 0 5px #f89e5b;
+    color: #fdbf4f;
+    text-shadow: 0 0 5px #2E120F;
+    
+}
+div.all
+{
+    height: 10vw;
+    width: 95vw;
+    background-color: #C9925E;
+    height: 5vw;;
+    position: absolute;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+div.forma
+{
+    text-align: center;
+    font-family: 'Snell Roundhand';
+    font-style: italic;
+    font-size: 110%;
+    line-height: 190%;
+    margin-top: 7vw;
+    margin-bottom: 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    padding-bottom: 10px;
+    height: auto;
+    width: 95vw;
+    background-color: #fdbf4f;
+    box-shadow: 0 0 5px #f89e5b; 
+    position: inherit;
+    overflow: auto;
+    color:  #080403;
+    
+}
+
+div.forma h3
+{
+    text-align: center;
+    color: #fff;
+    font-family: 'Snell Roundhand';
+    font-style: italic;
+    text-shadow: #DABB90 0 0 2px;
+    font-size: 2.5vw;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+footer 
+{
+    font-size: 1.3vw;
+    position: fixed;
+    left: 0; bottom: 0; 
+    padding: 10px; 
+    background-color: #080403;
+    color: #fff; 
+    width: 100%; 
+   }
+
+table 
+{
+    text-align: center;
+    margin-top: 0;
+    border-spacing: 23vw 0;
+}

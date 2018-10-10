@@ -1,52 +1,54 @@
 ﻿body {
     background-color: #BF6F40;
-    background-size: auto;
-    background-repeat: repeat;
-}
-#templatemo_menu {
-    clear: both;
-    /*width: 1070px;*/
-    height: fill-available;
-    border-radius: 10%; 
-    text-align: center;
-        background-color: #2E120F;
-    margin: 0 auto;
-   /* box-shadow: 0 0 20px #f47f10; */ 
-    margin-bottom: 1%;
 }
 
-#templatemo_menu ul {
-    /*width: 1070px;*/
-    display: inline-block; /* Добавлено */
-    height: fill-available;
-    margin: 0 auto;
-    padding: 7px 40px;
-    list-style: none;
+.menu {
     text-align: center;
+    background-color: #2E120F;
 }
 
-#templatemo_menu ul li {
-    padding: 0px;
-    margin: 0px;
-    display: inline;
-    text-align: center;
-}
 
-#templatemo_menu ul li a {
-text-align: center;
-    float: left;
-    display: block;
-    margin-right: 40px;
-    font-size: 150%;
-    text-decoration: none;
+.menu__links-item {
+    display: inline-block;
     color: #fff;
-    text-shadow: #383838 0 0 2px;    
-    font-weight: normal;
-    outline: none;
-    font-weight:bold;
+    font-family: 'Snell Roundhand';
+    font-style: italic;
+    font-size: 1.5vw;
+    line-height: 30px;
+    padding: 0 10px;
+    text-transform: uppercase;
+    text-decoration: none;
 }
-#templatemo_menu ul li a:hover, #templatemo_menu ul .current {
-    color: #162127;
+
+.menu__links-item:hover {
+    text-decoration: underline;
+}
+
+
+.menu.menu_state_open .menu__links {
+  display: block;  
+}
+
+@media screen and (max-width: 999px) {
+  
+  .menu__links {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin-top: 52px;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow: auto;
+  }
+  
+  .menu__links-item {
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+  }
 }
 
 div.logo img 
@@ -59,8 +61,10 @@ div.logo img
 
 div.title
 {
-    font-family: 'Courier New';
+    font-family: 'Brush Script MT';
+    font-style: italic;
     font-weight: bold;
+    text-transform: uppercase;
     font-size: 5vw;
     padding-left: 20%;
     margin-top: 0;
@@ -72,38 +76,40 @@ div.title a
 {
     text-decoration: none;
         text-shadow: 0 0 5px #f89e5b;
-    color: #47448b;
-    text-shadow: 0 0 5px #BF6F40;
+    color: #fdbf4f;
+    text-shadow: 0 0 5px #2E120F;
     
 }
 div.all
 {
-    height: 200%;
-    width: 90%;
+    height: 10vw;
+    width: 95vw;
     background-color: #C9925E;
     height: 5vw;;
     position: fixed;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    margin-left: 5%;
-    margin-right: 5%;
-    box-shadow: 0 0 5px #DABB90; 
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 
 div.news
 {
-    text-align: center;
-    font-size: 1.7vw;
+    text-align: justify;
+    font-family: 'Snell Roundhand';
+    font-size: 2vw;
     line-height: 190%;
-    margin-top: 11%;
-    padding-left: 1%;
-    height: 16vw;;
-    width: 100%;
+    margin-top: 7vw;
+    margin-bottom: 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    height: 20vw;
+    width: 95vw;
     background-color: #DABB90;
     box-shadow: 0 0 5px #f89e5b; 
     position: inherit;
     overflow: auto;
-    color: #1a245d;
+    color:  #080403;
     
 }
 
@@ -121,6 +127,7 @@ div.news ul:: before
 
 div.news li 
 {
+
 margin-bottom: 0.5vw;
 margin-top: 0.5vw;
 list-style: none; /* Скрываем маркеры списка */
@@ -131,14 +138,18 @@ div.news li::before
 {
 content: '\25ba'; /* Добавляем маркер в шестнадцатеричном формате*/
     padding-right: 5px; /* Расстояние от маркеров до текста */
-    color: red; /* Маркеры красного цвета */
+    color: #bf6f40; /* Маркеры красного цвета */
 }
 div.news h3
 {
+    text-align: center;
     color: #fff;
+    font-family: 'Snell Roundhand';
+    font-style: italic;
     text-shadow: #DABB90 0 0 2px;
     font-size: 2.5vw;
     margin-bottom: 0;
+    text-transform: uppercase;
 }
 
 footer 
