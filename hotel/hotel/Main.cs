@@ -46,6 +46,7 @@ namespace hotel
                 {
                     person = i;
                     infoBox.Text = listguests[person].GetSurname() + ", комната: " + listguests[person].GetRoom() + ", блюдо: " + listguests[person].GetDish();
+                    break;
                 }
 
                 else
