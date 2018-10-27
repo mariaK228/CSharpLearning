@@ -14,7 +14,7 @@ namespace hotel
     public partial class MainForm : Form
     {
         HotelSaving registration = new HotelSaving();
-        GuestsStruct[] listguests;
+      //  GuestsStruct[] listguests;
         public MainForm()
         {
             InitializeComponent();
@@ -32,12 +32,14 @@ namespace hotel
 
             registration.AddGuest(surname, room, dish);
 
-            choosePersonBox.Items.Add(surname);
+            registration.WriteGuests();
+            UpdateListBox();
         }
 
         private void choosePersonBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listguests = registration.GetPersons();
+
+            var listguests = registration.GetPersons();
 
             int person = -1;
             for (int i = 0; i < listguests.Length; i++)
@@ -55,6 +57,30 @@ namespace hotel
             
         }
 
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            EditGuest edit = new EditGuest(registration);
+            edit.ShowDialog();
 
+            registration.WriteGuests();
+            UpdateListBox();
+        }
+
+        private void UpdateListBox()
+        {
+            choosePersonBox.Items.Clear();
+            var listguests = registration.GetPersons();
+
+            for (int i = 0; i < listguests.Length; i++)
+            {
+                choosePersonBox.Items.Add(listguests[i].GetSurname());
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            registration.ReadGuests();
+            UpdateListBox();
+        }
     }
 }

@@ -57,6 +57,7 @@
             this.editButton.TabIndex = 1;
             this.editButton.Text = "Изменить";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // label1
             // 
@@ -134,6 +135,7 @@
             this.Controls.Add(this.addButton);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
