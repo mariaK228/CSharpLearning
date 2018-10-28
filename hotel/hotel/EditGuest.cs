@@ -53,9 +53,10 @@ namespace hotel
             }
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
         {
             hotel.EditGuest(surnameBox.Text, roomBox.Text, dishBox.Text);
+            Close();
         }
     }
 }
