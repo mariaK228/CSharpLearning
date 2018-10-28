@@ -13,7 +13,7 @@ namespace hotel
     public partial class AddGuest : Form
     {
         List<string> rooms = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
-        List<string> dishes = new List<string> { "Яичница", "Овсяная каша", "Манная каша", "Запеканка", "Хлопья с молоком" }; 
+        List<string> dishes = new List<string> { "Яичница", "Овсяная каша", "Манная каша", "Запеканка", "Хлопья с молоком" , "Пирог", "Салат", "Фрукты", "Кефир"}; 
         public AddGuest()
         {
             InitializeComponent();

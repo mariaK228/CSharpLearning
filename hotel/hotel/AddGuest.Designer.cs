@@ -39,67 +39,81 @@
             // 
             // surnameTextBox
             // 
-            this.surnameTextBox.Location = new System.Drawing.Point(7, 25);
+            this.surnameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.surnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.surnameTextBox.Location = new System.Drawing.Point(8, 32);
             this.surnameTextBox.Name = "surnameTextBox";
-            this.surnameTextBox.Size = new System.Drawing.Size(315, 20);
+            this.surnameTextBox.Size = new System.Drawing.Size(315, 22);
             this.surnameTextBox.TabIndex = 0;
             // 
             // roomBox
             // 
-            this.roomBox.Location = new System.Drawing.Point(7, 64);
+            this.roomBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.roomBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.roomBox.Location = new System.Drawing.Point(7, 80);
             this.roomBox.Name = "roomBox";
-            this.roomBox.Size = new System.Drawing.Size(315, 20);
+            this.roomBox.ReadOnly = true;
+            this.roomBox.Size = new System.Drawing.Size(315, 22);
             this.roomBox.TabIndex = 1;
             // 
             // dishBox
             // 
-            this.dishBox.Location = new System.Drawing.Point(7, 103);
+            this.dishBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dishBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dishBox.Location = new System.Drawing.Point(7, 128);
             this.dishBox.Name = "dishBox";
-            this.dishBox.Size = new System.Drawing.Size(315, 20);
+            this.dishBox.ReadOnly = true;
+            this.dishBox.Size = new System.Drawing.Size(315, 22);
             this.dishBox.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(4, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(88, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Фамилия";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 48);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(4, 57);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(64, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Номер";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 87);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(4, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.Size = new System.Drawing.Size(165, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Блюдо на завтрак";
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(7, 129);
+            this.AddButton.BackColor = System.Drawing.Color.Beige;
+            this.AddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddButton.Location = new System.Drawing.Point(7, 156);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(315, 23);
             this.AddButton.TabIndex = 6;
             this.AddButton.Text = "Добавить";
-            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // AddGuest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 170);
+            this.BackColor = System.Drawing.Color.LemonChiffon;
+            this.ClientSize = new System.Drawing.Size(363, 204);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -108,7 +122,7 @@
             this.Controls.Add(this.roomBox);
             this.Controls.Add(this.surnameTextBox);
             this.Name = "AddGuest";
-            this.Text = "AddGuest";
+            this.Text = "Добавить гостя";
             this.Load += new System.EventHandler(this.AddGuest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
