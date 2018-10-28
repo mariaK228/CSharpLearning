@@ -40,6 +40,7 @@ namespace hotel
             {
                 roomBox.Items.Add(rooms[i]);
             }
+            roomBox.SelectedIndex = 0;
         }
 
         public void WriteInDishes()
@@ -48,6 +49,7 @@ namespace hotel
             {
                 dishBox.Items.Add(dishes[i]);
             }
+            dishBox.SelectedIndex = 0;
         }
 
         private void AddGuest_Load(object sender, EventArgs e)
@@ -58,7 +60,10 @@ namespace hotel
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            Close();
+            if (surnameTextBox.Text != "")
+                Close();
+            else
+                MessageBox.Show("Поле фамилии пустое");
         }
     }
 }

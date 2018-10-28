@@ -38,19 +38,19 @@ namespace hotel
 
         private void choosePersonBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             var listguests = registration.GetPersons();
 
             int person = -1;
             for (int i = 0; i < listguests.Length; i++)
             {
-                if (listguests[i].GetSurname() == choosePersonBox.Text)
+                if (listguests[i].GetSurname() == choosePersonBox.Text && choosePersonBox.Text != "")
                 {
                     person = i;
                     infoBox.Text = listguests[person].GetSurname() + ", комната: " + listguests[person].GetRoom() + ", блюдо: " + listguests[person].GetDish();
                     break;
                 }
-
+                else if (choosePersonBox.Text == "")
+                    infoBox.Text = "";
                 else
                     infoBox.Text = "Информация не найдена";
             }
@@ -75,8 +75,9 @@ namespace hotel
             {
                 choosePersonBox.Items.Add(listguests[i].GetSurname());
             }
-        }
 
+
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
             registration.ReadGuests();

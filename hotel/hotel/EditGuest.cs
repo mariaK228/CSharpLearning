@@ -35,6 +35,7 @@ namespace hotel
             {
                 roomBox.Items.Add(rooms[i]);
             }
+            roomBox.SelectedIndex = 0;
         }
 
         public void WriteInDishes()
@@ -43,6 +44,7 @@ namespace hotel
             {
                 dishBox.Items.Add(dishes[i]);
             }
+            dishBox.SelectedIndex = 0;
         }
 
         public void WriteInPersons()
@@ -51,6 +53,7 @@ namespace hotel
             {
                 surnameBox.Items.Add(hotel.GetPersons()[i].GetSurname());
             }
+            surnameBox.SelectedIndex = 0;
         }
 
         private void EditButton_Click(object sender, EventArgs e)
