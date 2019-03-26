@@ -13,7 +13,7 @@ namespace hotel
      partial class EditGuest : Form
     {
         List<string> rooms = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
-        List<string> dishes = new List<string> { "Яичница", "Овсяная каша", "Манная каша", "Запеканка", "Хлопья с молоком" };
+        List<string> dishes = new List<string> { "Яичница", "Овсяная каша", "Манная каша", "Запеканка", "Хлопья с молоком", "Пирог", "Салат", "Фрукты", "Кефир" };
         HotelSaving hotel;
         public EditGuest(HotelSaving hoteldata)
         {
@@ -35,6 +35,7 @@ namespace hotel
             {
                 roomBox.Items.Add(rooms[i]);
             }
+            roomBox.SelectedIndex = 0;
         }
 
         public void WriteInDishes()
@@ -43,6 +44,7 @@ namespace hotel
             {
                 dishBox.Items.Add(dishes[i]);
             }
+            dishBox.SelectedIndex = 0;
         }
 
         public void WriteInPersons()
@@ -51,11 +53,13 @@ namespace hotel
             {
                 surnameBox.Items.Add(hotel.GetPersons()[i].GetSurname());
             }
+            surnameBox.SelectedIndex = 0;
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
         {
             hotel.EditGuest(surnameBox.Text, roomBox.Text, dishBox.Text);
+            Close();
         }
     }
 }

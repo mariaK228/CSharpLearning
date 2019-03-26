@@ -43,65 +43,36 @@ namespace hotel
 
             List<byte> result = new List<byte>();
             result.AddRange(bufSurname);
-            result.Add(0xff);
+            result.Add(01);
 
             result.AddRange(bufRoom);
-            result.Add(0xff);
+            result.Add(01);
 
             result.AddRange(bufDish);
-            result.Add(0xff);
+            result.Add(01);
 
             return result.ToArray();
 
         }
 
-        public GuestsStruct ReadNext(Stream file)
+        public GuestsStruct ReadNext(FileStream file)
         {
             string surname, room, dish;
 
             List<byte> buf = new List<byte>();
-            while (true)
-            {
-                int b = file.ReadByte();
-                if (b == -1)
-                    return new GuestsStruct();
-                if (b != 01)
-                {
-                    buf.Add((byte)b);
-                }
-                else
-                    break;
-            }
+
+            ReadToSeparator(file, buf);
+
             surname = Encoding.Default.GetString(buf.ToArray());
             buf.Clear();
 
-            while (true)
-            {
-                int b = file.ReadByte();
-                if (b == -1)
-                    return new GuestsStruct();
-                if (b != 01)
-                {
-                    buf.Add((byte)b);
-                }
-                else
-                    break;
-            }
+            ReadToSeparator(file, buf);
+
             room = Encoding.Default.GetString(buf.ToArray());
             buf.Clear();
 
-            while (true)
-            {
-                int b = file.ReadByte();
-                if (b == -1)
-                    return new GuestsStruct();
-                if (b != 01)
-                {
-                    buf.Add((byte)b);
-                }
-                else
-                    break;
-            }
+            ReadToSeparator(file, buf);
+
             dish = Encoding.Default.GetString(buf.ToArray());
             buf.Clear();
 
@@ -110,7 +81,22 @@ namespace hotel
             return g;
         }
 
-        void SaveToFile (Stream stream)
+        void ReadToSeparator(FileStream file, List<byte> buf)
+        {
+            while (true)
+            {
+                int b = file.ReadByte();
+                if (b == -1)
+                    break;
+                if (b != 01)
+                {
+                    buf.Add((byte)b);
+                }
+                else
+                    break;
+            }
+        }
+        void SaveToFile (FileStream stream)
         {
             foreach (GuestsStruct g in guest)
             {
@@ -119,11 +105,11 @@ namespace hotel
             }
         }
 
-        void ReadFile(Stream stream)
+        void ReadFile(FileStream stream)
         {
             guest.Clear();
 
-            while(stream.Length-stream.Position>0)
+            while((stream.Length - stream.Position) > 0)
             {
                 guest.Add(ReadNext(stream));
             }
