@@ -27,7 +27,7 @@ namespace PishitePisma
             string Text = InputInputbox.Text;
             byte[] data = Encoding.Unicode.GetBytes(Text);
 
-            SendMessage(data, IPAddress.Parse(UserIP.Text));
+            SendingMessage(data, IPAddress.Parse(UserIP.Text));
         }
 
         void Listener()
@@ -51,7 +51,7 @@ namespace PishitePisma
             }
         }
 
-        void SendMessage(byte[] data, IPAddress destination)
+        void SendingMessage(byte[] data, IPAddress destination)
         {
             UdpClient udp = new UdpClient(Port);
             IPEndPoint IPEP = new IPEndPoint(destination, Port);
