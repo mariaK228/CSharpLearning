@@ -33,6 +33,7 @@ namespace PishitePisma
         void Listener()
         {
             UdpClient udp = new UdpClient(Port);
+            
             while (true)
             {
                 try
@@ -53,7 +54,8 @@ namespace PishitePisma
 
         void SendingMessage(byte[] data, IPAddress destination)
         {
-            UdpClient udp = new UdpClient(Port);
+            UdpClient udp = new UdpClient();
+            udp.ExclusiveAddressUse = false;
             IPEndPoint IPEP = new IPEndPoint(destination, Port);
             udp.Send(data, data.Length, IPEP);
         }
