@@ -14,8 +14,11 @@ using System.Windows.Forms;
 
 namespace PishitePisma
 {
+    public delegate void InvokeDelegate(IPAddress sender, string text, string process);
     public partial class Form1 : Form
     {
+        private string FriendText;
+        private string MyText;
         public const int Port = 25565;
         public Form1()
         {
@@ -41,7 +44,9 @@ namespace PishitePisma
                     IPEndPoint IPEP = new IPEndPoint(IPAddress.Any, Port);
                     byte[] data = udp.Receive(ref IPEP);
                     IPAddress sender = IPEP.Address;
-                    MessageBox.Show("Message from " + sender + "\n" + Encoding.Unicode.GetString(data));
+                    FriendText = Encoding.Unicode.GetString(data);
+                  //  MessageBox.Show("Message from " + sender);
+                    MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), sender, FriendText, "получено");
                 }
 
                 catch (Exception ex)
@@ -52,12 +57,19 @@ namespace PishitePisma
             }
         }
 
+        private void AddMessage(IPAddress sender, string text, string process)
+        {
+            MessageDisplay.Text += sender + process + "\n-----------------\n" + text + "\n \n";
+        }
+
         void SendingMessage(byte[] data, IPAddress destination)
         {
             UdpClient udp = new UdpClient();
             udp.ExclusiveAddressUse = false;
             IPEndPoint IPEP = new IPEndPoint(destination, Port);
             udp.Send(data, data.Length, IPEP);
+            MyText = Encoding.Unicode.GetString(data);
+            MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), destination, MyText, "отправлено");
         }
 
         private void Form1_Load(object sender, EventArgs e)
