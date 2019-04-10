@@ -20,6 +20,8 @@ namespace PishitePisma
         private string FriendText;
         private string MyText;
         public const int Port = 25565;
+        static object locker = new object();
+        NetworkHelper networkHelper = new NetworkHelper();
         public Form1()
         {
             InitializeComponent();
@@ -37,39 +39,36 @@ namespace PishitePisma
         {
             UdpClient udp = new UdpClient(Port);
             
-            while (true)
+            lock(locker)
             {
-                try
+                while (true)
                 {
-                    IPEndPoint IPEP = new IPEndPoint(IPAddress.Any, Port);
-                    byte[] data = udp.Receive(ref IPEP);
-                    IPAddress sender = IPEP.Address;
-                    FriendText = Encoding.Unicode.GetString(data);
-                  //  MessageBox.Show("Message from " + sender);
-                    MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), sender, FriendText, "получено");
-                }
+                    try
+                    {
+                        networkHelper.SetSyncReceiveCallback();
+                        FriendText = Encoding.Unicode.GetString(networkHelper.Peek().Data);
+                        MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), networkHelper.Dequeue().Sender, FriendText, " получено");
+                    }
 
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex);
-                }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex);
+                    }
 
+                }
             }
         }
 
         private void AddMessage(IPAddress sender, string text, string process)
         {
-            MessageDisplay.Text += sender + process + "\n-----------------\n" + text + "\n \n";
+            MessageDisplay.Text += sender.ToString() + process + "\n-----------------\n" + text + "\n \n";
         }
 
         void SendingMessage(byte[] data, IPAddress destination)
         {
-            UdpClient udp = new UdpClient();
-            udp.ExclusiveAddressUse = false;
-            IPEndPoint IPEP = new IPEndPoint(destination, Port);
-            udp.Send(data, data.Length, IPEP);
+            networkHelper.SendPackage(data, destination);
             MyText = Encoding.Unicode.GetString(data);
-            MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), destination, MyText, "отправлено");
+            MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), destination, MyText, " отправлено");
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -9,32 +9,51 @@ using System.Threading.Tasks;
 
 namespace PishitePisma
 {
-    public delegate void NetCallback(byte[] pkg, IPAddress sender);
+    struct NetPackage
+    {
+        public IPAddress Sender;
+        public byte[] Data;
+    }
     class NetworkHelper
     {
+        Queue<NetPackage> queue = new Queue<NetPackage>();
         public const int Port = 25565;
-        void SendPackage(byte[] pkg, IPAddress destination)
+        public void SendPackage(byte[] pkg, IPAddress destination)
         {
             UdpClient udp = new UdpClient();
             udp.ExclusiveAddressUse = false;
             IPEndPoint endPoint = new IPEndPoint(destination, Port);
-            udp.Send(pkg, pkg.Length);
+            udp.Send(pkg, pkg.Length, endPoint);
         }
 
-        void SetSyncReceiveCallback(byte[] callback)
+        public void SetSyncReceiveCallback()
         {
             UdpClient udp = new UdpClient();
-
             try
             {
                 IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, Port);
-                callback = udp.Receive(ref endPoint);
+                queue.Enqueue(new NetPackage() { Data = udp.Receive(ref endPoint), Sender = endPoint.Address});
             }
 
             catch (Exception ex)
             {
                 Debug.WriteLine("Error:" + ex);
             }
+        }
+
+        public NetPackage Dequeue()
+        {
+            return queue.Dequeue();
+        }
+
+       public int Count()
+        {
+            return queue.Count();
+        }
+
+        public NetPackage Peek()
+        {
+            return queue.Peek();
         }
     }
 }
