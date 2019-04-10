@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using NetworkLibrary;
 namespace PishitePisma
 {
     public delegate void InvokeDelegate(IPAddress sender, string text, string process);
@@ -21,7 +15,7 @@ namespace PishitePisma
         private string MyText;
         public const int Port = 25565;
         static object locker = new object();
-        NetworkHelper networkHelper = new NetworkHelper();
+       // NetworkHelper networkHelper = new NetworkHelper();
         public Form1()
         {
             InitializeComponent();
@@ -45,9 +39,9 @@ namespace PishitePisma
                 {
                     try
                     {
-                        networkHelper.SetSyncReceiveCallback();
-                        FriendText = Encoding.Unicode.GetString(networkHelper.Peek().Data);
-                        MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), networkHelper.Dequeue().Sender, FriendText, " получено");
+                        NetworkLibrary.MessegeReceiver();
+                        FriendText = Encoding.Unicode.GetString(Peek().Data);
+                        MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), Dequeue().Sender, FriendText, " получено");
                     }
 
                     catch (Exception ex)
@@ -66,7 +60,7 @@ namespace PishitePisma
 
         void SendingMessage(byte[] data, IPAddress destination)
         {
-            networkHelper.SendPackage(data, destination);
+            SendPackage(data, destination);
             MyText = Encoding.Unicode.GetString(data);
             MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), destination, MyText, " отправлено");
         }
