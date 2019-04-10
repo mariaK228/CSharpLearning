@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
@@ -14,7 +15,6 @@ namespace PishitePisma
     {
         private string MyText;
         public const int Port = 25565;
-        static object locker = new object();
         NetworkHelper networkHelper = new NetworkHelper();
         public Form1()
         {
@@ -32,27 +32,24 @@ namespace PishitePisma
         void Listener()
         {
             UdpClient udp = new UdpClient(Port);
-            
-            lock(locker)
+
+            while (true)
             {
-                while (true)
+                try
                 {
-                    try
-                    {
-                        networkHelper.MessageReceiver();
-                        NetPackage AddressMessage = networkHelper.Peek();
-                        string message = Encoding.Unicode.GetString(AddressMessage.Data);
-                        IPAddress iPAddress = AddressMessage.Sender;
-                        MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), iPAddress, message, " получено");
-                    }
+                    networkHelper.MessageReceiver();
+                    NetPackage AddressMessage = networkHelper.Dequeue();
+                    string message = Encoding.Unicode.GetString(AddressMessage.Data);
+                    IPAddress iPAddress = AddressMessage.Sender;
+                    MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), iPAddress, message, " получено");
+                }
 
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex);
-                    }
-
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
                 }
             }
+
         }
 
         private void AddMessage(IPAddress sender, string text, string process)
