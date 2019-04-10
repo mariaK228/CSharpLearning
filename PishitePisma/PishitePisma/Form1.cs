@@ -6,16 +6,16 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using NetworkLibrary;
+
 namespace PishitePisma
 {
     public delegate void InvokeDelegate(IPAddress sender, string text, string process);
     public partial class Form1 : Form
     {
-        private string FriendText;
         private string MyText;
         public const int Port = 25565;
         static object locker = new object();
-       // NetworkHelper networkHelper = new NetworkHelper();
+        NetworkHelper networkHelper = new NetworkHelper();
         public Form1()
         {
             InitializeComponent();
@@ -39,9 +39,11 @@ namespace PishitePisma
                 {
                     try
                     {
-                        NetworkLibrary.MessegeReceiver();
-                        FriendText = Encoding.Unicode.GetString(Peek().Data);
-                        MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), Dequeue().Sender, FriendText, " получено");
+                        networkHelper.MessageReceiver();
+                        NetPackage AddressMessage = networkHelper.Peek();
+                        string message = Encoding.Unicode.GetString(AddressMessage.Data);
+                        IPAddress iPAddress = AddressMessage.Sender;
+                        MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), iPAddress, message, " получено");
                     }
 
                     catch (Exception ex)
@@ -60,7 +62,7 @@ namespace PishitePisma
 
         void SendingMessage(byte[] data, IPAddress destination)
         {
-            SendPackage(data, destination);
+            networkHelper.SendPackage(data, destination);
             MyText = Encoding.Unicode.GetString(data);
             MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), destination, MyText, " отправлено");
         }
