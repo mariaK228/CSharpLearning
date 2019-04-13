@@ -78,7 +78,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NetworkLibrary\NetworkLibrary\NetworkLibrary.csproj">
+    <ProjectReference Include="..\NetworkLibrary\NetworkLibrary.csproj">
       <Project>{f048b6f8-cfd0-4d4f-9b13-d7c8c581f1c4}</Project>
       <Name>NetworkLibrary</Name>
     </ProjectReference>
