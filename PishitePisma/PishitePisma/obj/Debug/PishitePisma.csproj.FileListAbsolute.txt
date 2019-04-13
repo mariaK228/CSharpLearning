@@ -1,0 +1,13 @@
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\bin\Debug\PishitePisma.exe.config
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\bin\Debug\PishitePisma.exe
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\bin\Debug\PishitePisma.pdb
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\obj\Debug\PishitePisma.csprojAssemblyReference.cache
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\obj\Debug\PishitePisma.Form1.resources
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\obj\Debug\PishitePisma.Properties.Resources.resources
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\obj\Debug\PishitePisma.csproj.GenerateResource.cache
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\obj\Debug\PishitePisma.csproj.CoreCompileInputs.cache
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\obj\Debug\PishitePisma.exe
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\obj\Debug\PishitePisma.pdb
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\bin\Debug\NetworkLibrary.dll
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\bin\Debug\NetworkLibrary.pdb
+C:\Users\Maria\Documents\GitHub\CSharpLearning\PishitePisma\PishitePisma\obj\Debug\PishitePisma.csproj.CopyComplete
