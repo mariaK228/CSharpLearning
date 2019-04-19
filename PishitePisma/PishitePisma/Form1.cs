@@ -9,11 +9,13 @@ using NetworkLibrary;
 namespace PishitePisma
 {
     public delegate void InvokeDelegate(IPAddress sender, string text, string process);
+
     public partial class Form1 : Form
     {
         private string MyText;
         public const int Port = 25565;
         NetworkHelper networkHelper = new NetworkHelper();
+        NetPackage callback;
         public Form1()
         {
             InitializeComponent();
@@ -30,22 +32,21 @@ namespace PishitePisma
         void Listener()
         {
 
-            while (true)
-            {
                 try
                 {
-                    networkHelper.MessageReceiver();
-                    NetPackage AddressMessage = networkHelper.Dequeue();
-                    string message = Encoding.Unicode.GetString(AddressMessage.Data);
-                    IPAddress iPAddress = AddressMessage.Sender;
+                    networkHelper.MessageReceiver(Callback);
+                    string message = Encoding.Unicode.GetString(callback.Data);
+                    IPAddress iPAddress = callback.Sender;
                     MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), iPAddress, message, " получено");
+                
+                   
                 }
 
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex);
                 }
-            }
+            
 
         }
 
@@ -66,6 +67,11 @@ namespace PishitePisma
             Thread listenerThread = new Thread(Listener);
             listenerThread.Start();
 
+        }
+
+        public void Callback(NetPackage netPackage)
+        {
+            callback = netPackage;
         }
     }
 }

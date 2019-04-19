@@ -1,0 +1,1 @@
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Tic_tac_toe\Tic_tac_toe\bin\Debug\Tic_tac_toe.exe.config

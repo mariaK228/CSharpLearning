@@ -1,0 +1,1 @@
+C:\Users\kiris\Documents\GitHub\CSharpLearning\average\average\bin\Debug\average.exe.config

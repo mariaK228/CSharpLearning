@@ -1,0 +1,10 @@
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\bin\Debug\Soosliqi.exe.config
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\bin\Debug\Soosliqi.exe
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\bin\Debug\Soosliqi.pdb
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\obj\Debug\Soosliqi.csprojResolveAssemblyReference.cache
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\obj\Debug\Soosliqi.MainForm.resources
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\obj\Debug\Soosliqi.Properties.Resources.resources
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\obj\Debug\Soosliqi.csproj.GenerateResource.Cache
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\obj\Debug\Soosliqi.exe
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\obj\Debug\Soosliqi.pdb
+C:\Users\kiris\Documents\GitHub\CSharpLearning\Soosliqi\Soosliqi\obj\Debug\Soosliqi.RecordSaver.resources

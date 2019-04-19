@@ -15,7 +15,8 @@ namespace NetworkLibrary
     }
     public class NetworkHelper
     {
-        Queue<NetPackage> queue = new Queue<NetPackage>();
+        public delegate void CallbackDelegate(NetPackage package);
+        
         public const int Port = 25565;
         public void SendPackage(byte[] pkg, IPAddress destination)
         {
@@ -25,51 +26,29 @@ namespace NetworkLibrary
             udp.Send(pkg, pkg.Length, endPoint);
         }
 
-        public void MessageReceiver()
+        public void MessageReceiver(CallbackDelegate Callback)
         {
-            //lock (queue)
-          //  {
                 UdpClient udp = new UdpClient(Port);
+            while (true)
+            {
                 try
                 {
                     IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, Port);
 
                     byte[] data = udp.Receive(ref endPoint);
                     IPAddress sender = endPoint.Address;
-                    NetPackage package = new NetPackage(){Data =  data, Sender = sender};
-                    queue.Enqueue(package);
-                    //queue.Enqueue(new NetPackage() { Data = udp.Receive(ref endPoint), Sender = endPoint.Address });
+                    NetPackage package = new NetPackage() { Data = data, Sender = sender };
+                    Callback(package);
+
                 }
 
                 catch (Exception ex)
                 {
                     Debug.WriteLine("Error:" + ex);
                 }
-            //}            
+            }
+    
         }
 
-        public NetPackage Dequeue()
-        {
-            //lock(queue)
-            //{
-                return queue.Dequeue();
-            //}           
-        }
-
-        public int Count()
-        {
-          //  lock (queue)
-          //  {
-                return queue.Count();
-           // }        
-        }
-
-        public NetPackage Peek()
-        {
-          //  lock (queue)
-          //  {
-                return queue.Peek();
-          //  }
-        }
     }
 }
