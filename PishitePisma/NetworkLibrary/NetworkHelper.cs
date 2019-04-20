@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace NetworkLibrary
         public IPAddress Sender;
         public byte[] Data;
     }
+
+    public delegate void CallbackDelegate(NetPackage netPackage);
     public class NetworkHelper
     {
-        public delegate void CallbackDelegate(NetPackage package);
-        
         public const int Port = 25565;
         public void SendPackage(byte[] pkg, IPAddress destination)
         {
@@ -28,27 +29,25 @@ namespace NetworkLibrary
 
         public void MessageReceiver(CallbackDelegate Callback)
         {
-                UdpClient udp = new UdpClient(Port);
-            while (true)
+            //lock (queue)
+            //  {
+            UdpClient udp = new UdpClient(Port);
+            try
             {
-                try
-                {
-                    IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, Port);
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, Port);
 
-                    byte[] data = udp.Receive(ref endPoint);
-                    IPAddress sender = endPoint.Address;
-                    NetPackage package = new NetPackage() { Data = data, Sender = sender };
-                    Callback(package);
-
-                }
-
-                catch (Exception ex)
-                {
-                    Debug.WriteLine("Error:" + ex);
-                }
+                byte[] data = udp.Receive(ref endPoint);
+                IPAddress sender = endPoint.Address;
+                NetPackage package = new NetPackage() { Data = data, Sender = sender };
+                Callback(package);
+                //queue.Enqueue(new NetPackage() { Data = udp.Receive(ref endPoint), Sender = endPoint.Address });
             }
-    
-        }
 
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error:" + ex);
+            }
+            //}            
+        }
     }
 }
