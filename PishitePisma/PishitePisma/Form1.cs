@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using NetworkLibrary;
 
@@ -28,25 +29,23 @@ namespace PishitePisma
             SendingMessage(data, IPAddress.Parse(UserIP.Text));
         }
 
-        void Listener()
+        public void Listener()
         {
-            while (true)
-            {
                 try
                 {
-                    networkHelper.MessageReceiver(Callback);
+                networkHelper.MessageReceiver(Callback, Listener);
                     NetPackage AddressMessage = callback;
                     string message = Encoding.Unicode.GetString(AddressMessage.Data);
                     IPAddress iPAddress = AddressMessage.Sender;
-                    MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), iPAddress, message, " получено");
+                  MessageDisplay.Enabled = true;
+                  this.MessageDisplay.BeginInvoke(new InvokeDelegate(AddMessage), iPAddress, message, " получено");
+                Listener();
                 }
 
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex);
                 }
-            }
-
         }
 
         private void AddMessage(IPAddress sender, string text, string process)

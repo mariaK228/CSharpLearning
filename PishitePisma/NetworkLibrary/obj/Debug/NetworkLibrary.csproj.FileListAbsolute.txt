@@ -4,3 +4,8 @@ C:\Users\kiris\Documents\GitHub\CSharpLearning\PishitePisma\NetworkLibrary\obj\D
 C:\Users\kiris\Documents\GitHub\CSharpLearning\PishitePisma\NetworkLibrary\obj\Debug\NetworkLibrary.csproj.CoreCompileInputs.cache
 C:\Users\kiris\Documents\GitHub\CSharpLearning\PishitePisma\NetworkLibrary\obj\Debug\NetworkLibrary.dll
 C:\Users\kiris\Documents\GitHub\CSharpLearning\PishitePisma\NetworkLibrary\obj\Debug\NetworkLibrary.pdb
+C:\Users\Mariia\Documents\GitHub\CSharpLearning\PishitePisma\NetworkLibrary\bin\Debug\NetworkLibrary.dll
+C:\Users\Mariia\Documents\GitHub\CSharpLearning\PishitePisma\NetworkLibrary\bin\Debug\NetworkLibrary.pdb
+C:\Users\Mariia\Documents\GitHub\CSharpLearning\PishitePisma\NetworkLibrary\obj\Debug\NetworkLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Mariia\Documents\GitHub\CSharpLearning\PishitePisma\NetworkLibrary\obj\Debug\NetworkLibrary.dll
+C:\Users\Mariia\Documents\GitHub\CSharpLearning\PishitePisma\NetworkLibrary\obj\Debug\NetworkLibrary.pdb

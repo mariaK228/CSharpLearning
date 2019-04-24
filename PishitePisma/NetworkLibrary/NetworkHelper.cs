@@ -5,7 +5,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace NetworkLibrary
 {
@@ -16,6 +17,7 @@ namespace NetworkLibrary
     }
 
     public delegate void CallbackDelegate(NetPackage netPackage);
+    public delegate void ListenerDelegate();
     public class NetworkHelper
     {
         public const int Port = 25565;
@@ -27,27 +29,34 @@ namespace NetworkLibrary
             udp.Send(pkg, pkg.Length, endPoint);
         }
 
-        public void MessageReceiver(CallbackDelegate Callback)
+        public void MessageReceiver(CallbackDelegate Callback, ListenerDelegate Listener)
         {
             //lock (queue)
             //  {
+            NetPackage pkg;
             UdpClient udp = new UdpClient(Port);
-            try
+            while(true)
             {
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, Port);
+                try
+                {
+                    IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, Port);
 
-                byte[] data = udp.Receive(ref endPoint);
-                IPAddress sender = endPoint.Address;
-                NetPackage package = new NetPackage() { Data = data, Sender = sender };
-                Callback(package);
-                //queue.Enqueue(new NetPackage() { Data = udp.Receive(ref endPoint), Sender = endPoint.Address });
-            }
+                    byte[] data = udp.Receive(ref endPoint);
+                    IPAddress sender = endPoint.Address;
+                    NetPackage package = new NetPackage() { Data = data, Sender = sender };
+                    pkg = package;
+                    break;
+                }
 
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Error:" + ex);
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error:" + ex);
+                }
             }
-            //}            
+            ThreadStart threadStart = new ThreadStart(()=>Callback(pkg));
+            Thread thread = new Thread(threadStart);
+            thread.Start();
+          // Task.Factory.StartNew(() => Callback(pkg), TaskCreationOptions.LongRunning);          
         }
     }
 }
